@@ -2,7 +2,6 @@
 
 import {
   LogOut,
-  User,
 } from "lucide-react"
 
 import Image from 'next/image'
@@ -16,7 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { SignedIn, SignedOut, SignInButton, SignOutButton, UserButton, useUser } from '@clerk/nextjs'
+import { SignOutButton, useUser } from '@clerk/nextjs'
 import ThemeSwitch from "../themeSwitch/ThemeSwitch"
 
 const UserProfile = () => {

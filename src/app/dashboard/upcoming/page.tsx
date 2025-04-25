@@ -1,5 +1,4 @@
 import UpcomingTodos from '@/features/todos/upcomingTodos'
-import { FC } from 'react'
 
 const UpcomingPage = ({ }) => {
   return (

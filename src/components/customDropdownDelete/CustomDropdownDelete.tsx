@@ -1,7 +1,7 @@
 'use client'
 
-import { Dispatch, FC, SetStateAction } from 'react'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu'
+import { FC } from 'react'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from '../ui/dropdown-menu'
 import { EllipsisIcon, Trash2 } from 'lucide-react'
 
 interface CustomDropdownDeleteProps {

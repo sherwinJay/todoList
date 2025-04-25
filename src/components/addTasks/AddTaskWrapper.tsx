@@ -2,8 +2,7 @@
 
 import { FC, useState } from 'react'
 import AddTaskButton from './AddTaskButton'
-import { Doc, Id } from '../../../convex/_generated/dataModel'
-import AddTaskFormWrapper from './AddTaskFormWrapper'
+import { Doc } from '../../../convex/_generated/dataModel'
 import InputForm from '../form/InputForm'
 
 interface AddTaskWrapperProps {

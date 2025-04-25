@@ -1,16 +1,13 @@
 "use client"
 
-import { FC, useState } from 'react'
-import { SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar'
+import { SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar'
 import { Collapsible, CollapsibleTrigger } from '../ui/collapsible'
 import { useParams, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { Hash, Plus, PlusIcon } from 'lucide-react'
-import { useAddTaskStore } from '@/stores/formDialogStore'
+import { Hash, Plus } from 'lucide-react'
 import { useQuery } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
-import ProjectForm from '../form/ProjectForm'
 import { useAddProjectStore } from '@/stores/projectFormDialogStore'
 import { Id } from '../../../convex/_generated/dataModel'
 

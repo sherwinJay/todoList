@@ -1,6 +1,4 @@
-import { useQuery } from 'convex/react'
 import { FC } from 'react'
-import { api } from '../../../../convex/_generated/api'
 import { ProjectsLists } from '@/components'
 
 interface pageProps {

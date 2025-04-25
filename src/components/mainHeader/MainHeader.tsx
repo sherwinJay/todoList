@@ -1,24 +1,8 @@
-'use client'
-
-import { SignedIn, UserButton } from '@clerk/nextjs'
-import { FC } from 'react'
-import { UserProfile, SearchForm } from '@/components'
-import { Separator } from '@radix-ui/react-dropdown-menu'
+import { UserProfile } from '@/components'
 import { SidebarTrigger } from '../ui/sidebar'
-import { Button } from '../ui/button'
-import { PlusIcon, Search, Slash } from 'lucide-react'
-import { useAddTaskStore } from '@/stores/formDialogStore'
-import { Input } from '../ui/input'
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '../ui/breadcrumb'
-import { usePathname } from 'next/navigation'
 
 
 const MainHeader = () => {
-  // const toggleAddForm = useAddTaskStore(state => state.toggleAddForm)
-  const pathname = usePathname()
-  const breadCrumbsItems = pathname.split("/")
-
-  // console.log(pathname)
 
   return (
     <>

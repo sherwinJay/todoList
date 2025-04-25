@@ -1,5 +1,4 @@
 import TodayTodos from '@/features/todos/todayTodos'
-import { FC } from 'react'
 
 const TodayPage = ({ }) => {
   return (

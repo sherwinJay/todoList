@@ -1,11 +1,11 @@
 'use client'
 
-import { useMutation, useQuery } from 'convex/react'
+import { useQuery } from 'convex/react'
 import moment from 'moment'
 import { FC } from 'react'
 import { api } from '../../../convex/_generated/api'
-import { TodoItem, Todos } from '@/components'
-import { CircleCheck, Dot } from 'lucide-react'
+import { Todos } from '@/components'
+import { Dot } from 'lucide-react'
 import TotalTodos from '../components/totalTodos'
 
 interface todosByDateProps {

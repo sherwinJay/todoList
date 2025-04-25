@@ -1,6 +1,5 @@
 import { Plus } from 'lucide-react'
-import { Dispatch, FC, SetStateAction } from 'react'
-import { Id } from '../../../convex/_generated/dataModel'
+import { FC } from 'react'
 import { Button } from '../ui/button'
 
 interface AddTaskButtonProps {

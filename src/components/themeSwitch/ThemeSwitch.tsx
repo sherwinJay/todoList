@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { ThemeContext } from '@/providers/ThemeProvider'
-import { MoonStar, SunDim, SunMedium } from 'lucide-react'
+import { MoonStar, SunMedium } from 'lucide-react'
 import { FC, useContext } from 'react'
 
 interface ThemeSwitchProps {

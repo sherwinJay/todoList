@@ -1,4 +1,3 @@
-import Tasks from "./tasks-test/Tasks"
 import UserProfile from "./userProfile/UserProfile"
 import MainHeader from "./mainHeader/MainHeader"
 import ThemeSwitch from "./themeSwitch/ThemeSwitch"
@@ -24,7 +23,6 @@ import CustomCollapsible from "./customCollapsible/CustomCollapsible"
 import SearchForm from "./form/SearchForm"
 
 export {
-  Tasks,
   UserProfile,
   MainHeader,
   ThemeSwitch,

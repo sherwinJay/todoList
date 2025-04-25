@@ -1,8 +1,8 @@
 'use client'
 
-import { FC, useState } from 'react'
-import { useAction, useMutation, useQuery } from 'convex/react'
-import { AddTaskWrapper, CustomDialog, CustomDropdownDelete, Loader, SubTodosList, TodoItem } from '@/components'
+import { useState } from 'react'
+import { useAction, useQuery } from 'convex/react'
+import { CustomDialog, CustomDropdownDelete, Loader } from '@/components'
 import { api } from '../../../convex/_generated/api'
 import { Todos } from '@/components'
 import CustomCollapsible from '../../components/customCollapsible/CustomCollapsible'

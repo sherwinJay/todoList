@@ -1,5 +1,5 @@
 import Placeholder from '@tiptap/extension-placeholder'
-import { BubbleMenu, EditorContent, FloatingMenu, useEditor } from '@tiptap/react'
+import { BubbleMenu, EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { FC } from 'react'
 import Document from '@tiptap/extension-document'

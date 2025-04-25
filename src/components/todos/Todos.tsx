@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { useAction, useMutation } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
 import { Doc } from '../../../convex/_generated/dataModel'
@@ -15,7 +15,7 @@ const Todos: FC<TodosProps> = ({ items }) => {
 
   const checkATodo = useMutation(api.todos.checkATodo)
   const unCheckATodo = useMutation(api.todos.unCheckATodo)
-  const deleteTask = useMutation(api.todos.deleteTodo)
+  // const deleteTask = useMutation(api.todos.deleteTodo)
   const deleteTaskAndItsSubtasks = useAction(api.todos.deleleTaskAndItsSubtasks)
 
   const handleOnChangeTodo = (task: Doc<'todos'>) => {

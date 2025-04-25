@@ -1,12 +1,12 @@
 'use client'
 
-import { FC, useContext, useState } from 'react'
-import { Doc, Id } from '../../../convex/_generated/dataModel'
+import { FC, useState } from 'react'
+import { Doc } from '../../../convex/_generated/dataModel'
 import { checkIsSubTodo, cn } from '@/lib/utils'
 import { Dialog, DialogTrigger } from '../ui/dialog'
 import { AddTaskDialog, AddSubTaskDialog, CustomCheckbox, CustomDialog, UpdateTaskForm } from "@/components"
 import moment from 'moment'
-import { Calendar, FilePenLine, GitBranch, PenLine, Trash2 } from 'lucide-react'
+import { Calendar, PenLine, Trash2 } from 'lucide-react'
 import TotalSubTodos from '../../features/components/TotalSubTodos'
 
 interface TodoItemProps {

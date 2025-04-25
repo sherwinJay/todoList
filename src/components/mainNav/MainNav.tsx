@@ -1,7 +1,6 @@
 "use client"
 
-import { FC } from 'react'
-import { SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar'
+import { SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar'
 import { navItems } from '@/data/mainNavItems'
 import { Collapsible, CollapsibleTrigger } from '../ui/collapsible'
 import { usePathname } from 'next/navigation'

@@ -1,13 +1,13 @@
 'use client'
 
 import { FC, useEffect, useState } from 'react'
-import { DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, InnerDialog, InnerDialogContent, InnerDialogTrigger } from '../ui/dialog'
+import { DialogContent, DialogDescription, DialogHeader, DialogTitle, InnerDialog, InnerDialogTrigger } from '../ui/dialog'
 import { Doc } from '../../../convex/_generated/dataModel'
 import { Label } from '../ui/label'
 import { Button } from '../ui/button'
-import { Calendar, ChevronDown, CircleCheckBig, Flag, GitBranch, Hash, Tag } from 'lucide-react'
+import { Calendar, ChevronDown, Flag, Hash, Tag } from 'lucide-react'
 import { format } from 'date-fns'
-import { useMutation, useQuery } from 'convex/react'
+import { useQuery } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
 import { cn } from '@/lib/utils'
 import { AddTaskWrapper, SubTodosList, CustomCheckbox } from "@/components"

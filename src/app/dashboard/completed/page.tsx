@@ -1,7 +1,4 @@
-import { MainHeader, MainSidebar, TodoList } from '@/components'
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 import CompletedTodos from '@/features/todos/completedTodos'
-import TodayTodos from '@/features/todos/todayTodos'
 import { FC } from 'react'
 
 interface pageProps {

@@ -1,12 +1,8 @@
 
-import { Doc, Id } from '../../../../../convex/_generated/dataModel'
+import { Id } from '../../../../../convex/_generated/dataModel'
 import ProjectsById from '@/features/projects/projectsById'
 
-interface pageProps {
-
-}
-
-const page = ({ params }: { params: { projectId: Id<'projects'> } }) => {
+const ProjectsByIdPage = () => {
 
   return (
     <div className="px-4 relative">
@@ -17,4 +13,4 @@ const page = ({ params }: { params: { projectId: Id<'projects'> } }) => {
   )
 }
 
-export default page
+export default ProjectsByIdPage

@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import { Sidebar, SidebarContent, SidebarHeader, SidebarRail } from '../ui/sidebar'
+import { Sidebar, SidebarContent, SidebarRail } from '../ui/sidebar'
 import MainNav from '../mainNav/MainNav'
-import { Plus, PlusIcon, SquarePen } from 'lucide-react'
+import { SquarePen } from 'lucide-react'
 import ProjectsNav from '../mainNav/ProjectsNav'
 interface MainSidebarProps {
 

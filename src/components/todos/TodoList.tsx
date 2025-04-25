@@ -1,11 +1,8 @@
 'use client'
 
-import { FC } from 'react'
 import { useQuery } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
-import { CircleCheckBig } from 'lucide-react'
 import Todos from './Todos'
-import { AddTaskWrapper } from '@/components'
 import TotalTodos from '@/features/components/totalTodos'
 
 const TodoList = ({ }) => {

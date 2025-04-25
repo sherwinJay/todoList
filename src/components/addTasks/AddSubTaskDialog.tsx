@@ -1,6 +1,5 @@
-import { DialogContent, DialogDescription, DialogTitle } from '@radix-ui/react-dialog'
 import { FC } from 'react'
-import { Dialog, DialogHeader, InnerDialogContent, InnerDialogDescription, InnerDialogHeader, InnerDialogTitle } from '../ui/dialog'
+import { InnerDialogContent, InnerDialogDescription, InnerDialogHeader, InnerDialogTitle } from '../ui/dialog'
 import { Doc } from '../../../convex/_generated/dataModel'
 
 interface AddSubTaskDialogProps {

@@ -6,7 +6,6 @@ import { api } from '../../../convex/_generated/api'
 import TotalTodos from '../components/totalTodos'
 import { Loader, Todos } from '@/components'
 import Image from 'next/image'
-import womanReadingImage from '../../../public/assets/images/undraw_tree-swing_5010.svg'
 interface inboxTodosProps {
 
 }
