@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuery } from 'convex/react'
-import { CircleCheck, CircleCheckBig, Dot } from 'lucide-react'
+import { Dot } from 'lucide-react'
 import { AddTaskWrapper, CustomCollapsible, Loader, TotalTodos } from '@/components'
 import { api } from '../../../convex/_generated/api'
 import { Todos } from '@/components'
@@ -16,7 +16,7 @@ const TodayTodos = ({ }) => {
   const todayStart = moment().startOf("day")
   const todayEnd = moment().endOf("day")
 
-  const incompleteTodos = useQuery(api.todos.getInCompletedTodos)
+  const incompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []
   const overdueTodos = incompleteTodos?.filter(todo => todo.dueDate < todayStart.valueOf()) || []
   const todayTodos = incompleteTodos?.filter(todo => todo.dueDate >= todayStart.valueOf() && todo.dueDate <= todayEnd.valueOf()) || []
   const totalTodos = todayTodos.length + overdueTodos.length

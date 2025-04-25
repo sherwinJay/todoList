@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import { ProjectsLists } from '@/components'
 
 const ProjectsPage = ({ }) => {

@@ -20,7 +20,6 @@ import CustomDropdownDelete from "./customDropdownDelete/CustomDropdownDelete"
 import Loader from "./loader/Loader"
 import TotalTodos from "@/features/components/totalTodos"
 import CustomCollapsible from "./customCollapsible/CustomCollapsible"
-import SearchForm from "./form/SearchForm"
 
 export {
   UserProfile,
@@ -45,5 +44,4 @@ export {
   Loader,
   TotalTodos,
   CustomCollapsible,
-  SearchForm,
 }

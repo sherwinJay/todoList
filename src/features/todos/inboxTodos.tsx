@@ -12,7 +12,7 @@ interface inboxTodosProps {
 
 const InboxTodos: FC<inboxTodosProps> = ({ }) => {
   const inCompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []
-  const totalIncompleteTodos = useQuery(api.todos.getTotalInCompleteTodos)
+  const totalIncompleteTodos = useQuery(api.todos.getTotalInCompleteTodos) ?? 0
 
   if (inCompleteTodos === undefined || totalIncompleteTodos === undefined) {
     return <Loader />

@@ -16,7 +16,7 @@ interface SubTodosListProps {
 }
 
 // * create new subtodoItem component and make them popOver
-const SubTodosList: FC<SubTodosListProps> = ({ subTodosData, handleCheck }) => {
+const SubTodosList: FC<SubTodosListProps> = ({ subTodosData }) => {
   const checkSubTodo = useMutation(api.subTodos.checkASubTodo)
   const unCheckSubTodo = useMutation(api.subTodos.unCheckASubTodo)
   const deleteSubTask = useMutation(api.subTodos.deleteSubTask)

@@ -9,7 +9,7 @@ import React, { ReactNode, useEffect, useState, createContext } from 'react'
 
 export const ThemeContext = createContext({
   theme: '',
-  setTheme: (theme: 'dark' | 'light') => { }
+  setTheme: (_theme: 'dark' | 'light') => { }
 })
 
 const geistSans = Geist({

@@ -11,7 +11,7 @@ import { toast } from 'sonner'
 
 const CompletedTodos = ({ }) => {
   const completedTodos = useQuery(api.todos.getCompletedTodos) ?? []
-  const totalCompletedTasks = useQuery(api.todos.getTotalCompletedTodos)
+  const totalCompletedTasks = useQuery(api.todos.getTotalCompletedTodos) ?? 0
   const deleteAllTasksAndItsSubtasks = useAction(api.todos.deleteAllCompletedTodoAndItsSubtasks)
   const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 

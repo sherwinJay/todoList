@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import { Sidebar, SidebarContent, SidebarRail } from '../ui/sidebar'
 import MainNav from '../mainNav/MainNav'
 import { SquarePen } from 'lucide-react'

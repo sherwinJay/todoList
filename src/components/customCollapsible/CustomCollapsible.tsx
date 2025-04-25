@@ -10,7 +10,7 @@ interface CustomCollapsibleProps {
   showDropdownDelete?: boolean
 }
 
-const CustomCollapsible: FC<CustomCollapsibleProps> = ({ title, children, showDropdownDelete }) => {
+const CustomCollapsible: FC<CustomCollapsibleProps> = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(true)
   return (
     <Collapsible className="flex flex-col gap-1 py-4" open={isOpen}
