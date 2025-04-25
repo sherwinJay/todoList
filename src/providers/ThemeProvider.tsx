@@ -9,7 +9,7 @@ import React, { ReactNode, useEffect, useState, createContext } from 'react'
 
 export const ThemeContext = createContext({
   theme: '',
-  setTheme: (_theme: 'dark' | 'light') => { }
+  setTheme: (_t: 'dark' | 'light') => { }
 })
 
 const geistSans = Geist({
@@ -45,8 +45,15 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
   }, [theme])
 
   const handleClose = () => {
-    isShowAddForm && closeForm()
-    isShowProjectForm && closeProjectForm()
+    if (isShowAddForm) {
+      closeForm()
+    }
+
+    if (isShowProjectForm) {
+      closeProjectForm()
+    }
+    // isShowAddForm && closeForm()
+    // isShowProjectForm && closeProjectForm()
   }
 
   return (

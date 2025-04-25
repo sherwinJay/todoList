@@ -6,11 +6,8 @@ import { api } from '../../../convex/_generated/api'
 import TotalTodos from '../components/totalTodos'
 import { Loader, Todos } from '@/components'
 import Image from 'next/image'
-interface inboxTodosProps {
 
-}
-
-const InboxTodos: FC<inboxTodosProps> = ({ }) => {
+const InboxTodos = ({ }) => {
   const inCompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []
   const totalIncompleteTodos = useQuery(api.todos.getTotalInCompleteTodos) ?? 0
 

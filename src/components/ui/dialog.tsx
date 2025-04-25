@@ -91,7 +91,7 @@ function InnerDialog({ children }: { children: React.ReactNode }) {
     return () => {
       document.removeEventListener("keydown", handleEscapeKeyDown);
     };
-  }, [context.innerOpen, context.setInnerOpen]);
+  }, [context, context.innerOpen, context.setInnerOpen]);
 
   return (
     <DialogPrimitive.Root
@@ -117,7 +117,7 @@ const InnerDialogContent = React.forwardRef<
   InnerDialogContentProps
 >(
   (
-    { className, children, position = "default", draggable = false, ...props },
+    { className, children, position, draggable = false, ...props },
     ref,
   ) => {
     const context = React.useContext(DialogContext);
