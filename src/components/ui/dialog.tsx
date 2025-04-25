@@ -127,13 +127,13 @@ const InnerDialogContent = React.forwardRef<
     const [isDragging, setIsDragging] = React.useState(false);
     const [startY, setStartY] = React.useState(0);
     const [currentY, setCurrentY] = React.useState(0);
-    const [isClosingByDrag, setIsClosingByDrag] = React.useState(false);
+    // const [isClosingByDrag, setIsClosingByDrag] = React.useState(false);
     const contentRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
       if (context.innerOpen) {
         setCurrentY(0);
-        setIsClosingByDrag(false);
+        // setIsClosingByDrag(false);
       }
     }, [context.innerOpen]);
 
@@ -154,7 +154,7 @@ const InnerDialogContent = React.forwardRef<
       if (!draggable) return;
       setIsDragging(false);
       if (currentY > (contentRef.current?.offsetHeight || 0) / 2) {
-        setIsClosingByDrag(true);
+        // setIsClosingByDrag(true);
         context.setInnerOpen(false);
       } else {
         setCurrentY(0);

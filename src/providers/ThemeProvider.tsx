@@ -44,13 +44,15 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem('theme', JSON.stringify(theme))
   }, [theme])
 
+  const handleClose = () => {
+    isShowAddForm && closeForm()
+    isShowProjectForm && closeProjectForm()
+  }
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <body className={`${geistSans.variable} ${geistMono.variable} relative antialiased ${theme}`}>
-        <div onClick={() => {
-          isShowAddForm && closeForm()
-          isShowProjectForm && closeProjectForm()
-        }}>
+        <div onClick={handleClose}>
           {children}
         </div>
         {isShowAddForm && (
