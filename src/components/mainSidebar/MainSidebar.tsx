@@ -3,11 +3,8 @@ import { Sidebar, SidebarContent, SidebarRail } from '../ui/sidebar'
 import MainNav from '../mainNav/MainNav'
 import { SquarePen } from 'lucide-react'
 import ProjectsNav from '../mainNav/ProjectsNav'
-interface MainSidebarProps {
 
-}
-
-const MainSidebar: FC<MainSidebarProps> = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
+const MainSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   return (
     <Sidebar collapsible="icon" {...props}>
       {/* <SidebarHeader>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams, useRouter } from 'next/navigation'
-import { FC, useState } from 'react'
+import { useState } from 'react'
 import { Doc, Id } from '../../../convex/_generated/dataModel'
 import { useAction, useQuery } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
@@ -9,20 +9,18 @@ import { AddTaskWrapper, CustomDialog, CustomDropdownDelete, Loader, Todos } fro
 import TotalTodos from '../components/totalTodos'
 import { toast } from 'sonner'
 
-interface projectsByIdProps {
-
-}
-
-const ProjectsById: FC<projectsByIdProps> = ({ }) => {
+const ProjectsById = ({ }) => {
   const { projectId } = useParams<{ projectId: Id<'projects'> }>()
   const todosByProject = useQuery(api.todos.getTodosByProjectId, { projectId }) ?? []
   const project = useQuery(api.projects.getProjectId, { projectId })
-  const projectName = project?.name
   const totalTodosByProject = todosByProject.length
   const [showConfirmDelete, setShowConfirmDelete] = useState(false)
   const router = useRouter()
   const deleteProjectAndItsTasks = useAction(api.projects.deleleProjectAndItsTasks)
 
+  if (todosByProject === undefined || project === undefined) {
+    return <Loader />
+  }
 
   const handleDelete = (projectId: Id<'projects'>) => {
     if (project?.type === 'system') {
@@ -57,7 +55,7 @@ const ProjectsById: FC<projectsByIdProps> = ({ }) => {
   return (
     <>
       <div className="flex items-center justify-between">
-        <h1 className="text-lg font-semibold md:text-2xl">{projectName}</h1>
+        <h1 className="text-lg font-semibold md:text-2xl">{project?.name}</h1>
         <div className='flex items-center'>
           <CustomDropdownDelete
             title='Delete Project'
@@ -83,7 +81,7 @@ const ProjectsById: FC<projectsByIdProps> = ({ }) => {
       {showConfirmDelete && (
         <CustomDialog
           title="Delete Project"
-          taskName={projectName!}
+          taskName={project!.name}
           setShowConfirmDelete={() => setShowConfirmDelete(false)}
           handleDelete={() => handleDelete(projectId)}
         />

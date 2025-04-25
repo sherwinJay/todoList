@@ -1,11 +1,7 @@
 import { FC } from 'react'
 import { ProjectsLists } from '@/components'
 
-interface pageProps {
-
-}
-
-const ProjectsPage: FC<pageProps> = ({ }) => {
+const ProjectsPage = ({ }) => {
 
   return (
     <div className="px-4 relative">
