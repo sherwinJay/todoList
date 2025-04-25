@@ -1,11 +1,5 @@
 "use client";
 
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronUpIcon,
-} from "lucide-react";
 import * as React from "react";
 import { DayFlag, DayPicker, SelectionState, UI } from "react-day-picker";
 import { ChevronProps } from "react-day-picker";

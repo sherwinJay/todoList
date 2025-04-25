@@ -1,11 +1,6 @@
 import CompletedTodos from '@/features/todos/completedTodos'
-import { FC } from 'react'
 
-interface pageProps {
-
-}
-
-const CompletedPage: FC<pageProps> = ({ }) => {
+const CompletedPage = ({ }) => {
 
   return (
     <div className="px-4 relative">

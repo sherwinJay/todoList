@@ -5,7 +5,7 @@ import ProjectForm from '@/components/form/ProjectForm';
 import { useAddTaskStore } from '@/stores/formDialogStore';
 import { useAddProjectStore } from '@/stores/projectFormDialogStore';
 import { Geist, Geist_Mono } from 'next/font/google';
-import React, { ReactNode, useEffect, useState, createContext, useMemo } from 'react'
+import React, { ReactNode, useEffect, useState, createContext } from 'react'
 
 export const ThemeContext = createContext({
   theme: '',

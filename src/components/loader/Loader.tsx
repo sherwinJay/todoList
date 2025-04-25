@@ -1,10 +1,5 @@
-import { FC } from 'react'
 
-interface LoaderProps {
-
-}
-
-const Loader: FC<LoaderProps> = ({ }) => {
+const Loader = ({ }) => {
   return (
     <section className="grid place-content-center gap-8 h-full">
       <div className='flex flex-col justify-center items-center gap-3.5'>

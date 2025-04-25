@@ -1,5 +1,3 @@
-
-import { Id } from '../../../../../convex/_generated/dataModel'
 import ProjectsById from '@/features/projects/projectsById'
 
 const ProjectsByIdPage = () => {

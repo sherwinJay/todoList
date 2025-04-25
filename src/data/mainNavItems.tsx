@@ -1,4 +1,4 @@
-import { Calendar, CalendarDays, CircleCheckBig, Grid2X2, Inbox } from "lucide-react";
+import { Calendar, CalendarDays, CircleCheckBig, Inbox } from "lucide-react";
 
 export const navItems = [
   {
@@ -22,13 +22,13 @@ export const navItems = [
     icon: <CalendarDays className="w-4 h-4" />,
     isActive: false
   },
-  {
-    name: "Filters & Labels",
-    link: "/dashboard/filters-labels",
-    id: "nav4",
-    icon: <Grid2X2 className="w-4 h-4" />,
-    isActive: false
-  },
+  // {
+  //   name: "Filters & Labels",
+  //   link: "/dashboard/filters-labels",
+  //   id: "nav4",
+  //   icon: <Grid2X2 className="w-4 h-4" />,
+  //   isActive: false
+  // },
   {
     name: "Completed",
     link: "/dashboard/completed",

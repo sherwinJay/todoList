@@ -1,5 +1,5 @@
 import { Editor } from "@tiptap/react";
-import { Bold, Calendar, CalendarDays, Grid2X2, Heading1, Heading2, Inbox, Italic, List, ListOrdered } from "lucide-react";
+import { Bold, Heading1, Heading2, Italic, List, ListOrdered } from "lucide-react";
 
 export const customEditorButtonItems = [
   {

@@ -17,10 +17,10 @@ import { CalendarIcon, Flag, Text as TextLucide } from "lucide-react"
 import { CardFooter } from "../ui/card"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 import { Calendar } from "../ui/calendar"
-import { checkIsSubTodo, cn } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 import { Doc, Id } from "../../../convex/_generated/dataModel"
-import { useAction, useMutation, useQuery } from "convex/react"
+import { useMutation, useQuery } from "convex/react"
 import { api } from "../../../convex/_generated/api"
 import { toast } from 'sonner'
 import moment from "moment"
@@ -52,8 +52,8 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
   const createATodoMutation = useMutation(api.todos.createATodo)
   const createASubTodoMutation = useMutation(api.subTodos.createASubTodo)
 
-  const createATodoAndEmbeddings = useAction(api.todos.createTodoAndEmbeddings)
-  const createASubTodoAndEmbeddings = useAction(api.subTodos.createSubTodoAndEmbeddings)
+  // const createATodoAndEmbeddings = useAction(api.todos.createTodoAndEmbeddings)
+  // const createASubTodoAndEmbeddings = useAction(api.subTodos.createSubTodoAndEmbeddings)
 
   const defaultValues = {
     taskName: '',
@@ -234,7 +234,7 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {labels.map((label: Doc<"labels">, idx) => (
+                          {labels.map((label: Doc<"labels">) => (
                             <SelectItem key={label._id} value={label._id}>{label.name}</SelectItem>
                           ))}
                         </SelectContent>
@@ -262,7 +262,7 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {projects.map((project: Doc<"projects">, idx) => (
+                    {projects.map((project: Doc<"projects">) => (
                       <SelectItem key={project._id} value={project._id} className="text-xs">{project.name}</SelectItem>
                     ))}
                   </SelectContent>

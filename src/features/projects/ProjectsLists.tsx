@@ -1,17 +1,12 @@
 'use client'
 
 import { useQuery } from 'convex/react'
-import { FC } from 'react'
 import { api } from '../../../convex/_generated/api'
 import Link from 'next/link'
 import { Hash } from 'lucide-react'
 import { Label } from '../../components/ui/label'
 
-interface ProjectsListsProps {
-
-}
-
-const ProjectsLists: FC<ProjectsListsProps> = ({ }) => {
+const ProjectsLists = ({ }) => {
   const projects = useQuery(api.projects.getProjects) ?? []
   return (
     <div className='flex flex-col gap-1 py-4'>{

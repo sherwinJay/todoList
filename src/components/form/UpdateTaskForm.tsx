@@ -35,7 +35,7 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
   const currentDate = new Date()
   const todayMidnight = new Date(currentDate.setHours(0, 0, 0, 0))
   const parentId = parentTask?._id as Id<"todos">// !parentId make? sure to appear
-  const { taskName, description, dueDate, projectId, labelId } = parentTask
+  const { taskName, description, projectId, labelId } = parentTask
   const stringPriority = parentTask?.priority?.toString()
   const updateTask = useMutation(api.todos.updateATodo)
   const updateSubTask = useMutation(api.subTodos.updateASubTodo)
@@ -227,7 +227,7 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {labels.map((label: Doc<"labels">, idx) => (
+                          {labels.map((label: Doc<"labels">) => (
                             <SelectItem key={label._id} value={label._id} className='text-xs'>{label.name}</SelectItem>
                           ))}
                         </SelectContent>
@@ -259,7 +259,7 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {projects.map((project: Doc<"projects">, idx) => (
+                    {projects.map((project: Doc<"projects">) => (
                       <SelectItem key={project._id} value={project._id} className='text-xs'>{project.name}</SelectItem>
                     ))}
                   </SelectContent>
