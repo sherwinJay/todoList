@@ -55,7 +55,7 @@ const DialogContent = React.forwardRef<
 
   return (
     <DialogPortal data-slot="dialog-portal">
-      <DialogOverlay />
+      <DialogOverlay ref={ref} />
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
@@ -117,7 +117,7 @@ const InnerDialogContent = React.forwardRef<
   InnerDialogContentProps
 >(
   (
-    { className, children, position, draggable = false, ...props },
+    { className, children, draggable = false, ...props },
     ref,
   ) => {
     const context = React.useContext(DialogContext);

@@ -1,7 +1,6 @@
 'use client'
 
 import { useQuery } from 'convex/react'
-import { FC } from 'react'
 import { api } from '../../../convex/_generated/api'
 import TotalTodos from '../components/totalTodos'
 import { Loader, Todos } from '@/components'
