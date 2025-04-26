@@ -1,7 +1,6 @@
-import { Id } from "./_generated/dataModel"
 import { action, mutation, query } from "./_generated/server"
 import { v } from "convex/values"
-import { getUserId, handleUserId } from "./auth"
+import { getUserId } from "./auth"
 import { getEmbeddingsWithAI } from "./openai"
 import { api } from "./_generated/api"
 

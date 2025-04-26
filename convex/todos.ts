@@ -1,9 +1,9 @@
-import { Doc, Id } from "./_generated/dataModel.d"
-import { ConvexError, v } from "convex/values"
-import { action, internalMutation, mutation, query } from "./_generated/server"
-import { getUserId, handleUserId } from "./auth"
+import { Doc } from "./_generated/dataModel.d"
+import { v } from "convex/values"
+import { action, mutation, query } from "./_generated/server"
+import { getUserId } from "./auth"
 import moment from "moment"
-import { api, internal } from "./_generated/api"
+import { api } from "./_generated/api"
 import { getEmbeddingsWithAI } from "./openai"
 
 // * QUERIES

@@ -1,5 +1,5 @@
 import { Auth } from "convex/server"
-import { Doc, Id } from "./_generated/dataModel"
+import { Id } from "./_generated/dataModel"
 import { ConvexError } from "convex/values"
 
 type AuthType = {

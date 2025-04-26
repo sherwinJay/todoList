@@ -1,6 +1,6 @@
 import { v } from "convex/values"
 import { query } from "./_generated/server"
-import { getUserId, handleUserId } from "./auth"
+import { getUserId } from "./auth"
 
 export const getLabels = query({
   args: {},

@@ -1,6 +1,6 @@
 import { v } from "convex/values"
 import { action, mutation, query } from "./_generated/server"
-import { getUserId, handleUserId } from "./auth"
+import { getUserId } from "./auth"
 import { api } from "./_generated/api"
 import { Doc } from "./_generated/dataModel"
 
