@@ -9,6 +9,11 @@ import CustomCollapsible from '../../components/customCollapsible/CustomCollapsi
 import Link from 'next/link'
 import TotalTodos from '../components/totalTodos'
 
+type Todo = {
+  // ... other properties
+  dueDate: string | number; // Accept both string and number
+};
+
 const UpcomingTodos = () => {
   const inCompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []
   const todayStart = moment().startOf("day")
@@ -32,11 +37,15 @@ const UpcomingTodos = () => {
   //   return acc;
   // }, {}) ?? []
 
-  const groupedTodosByDate = sortedUpcomingTodos.reduce((acc, todo) => {
+  const groupedTodosByDate = sortedUpcomingTodos.reduce<Record<string, Todo[]>>((acc, todo) => {
     if (!todo.dueDate) return acc;  // handle cases where dueDate might be missing
 
     // Use moment directly on the dueDate string if it's in ISO format
-    const dateKey = moment(todo.dueDate).startOf('day').toISOString();
+    // const dateKey = moment(todo.dueDate).startOf('day').toISOString();
+
+    const dateKey = typeof todo.dueDate === 'number'
+      ? moment(new Date(todo.dueDate)).startOf('day').toISOString()
+      : moment(todo.dueDate).startOf('day').toISOString();
 
     // Initialize the array if it doesn't exist
     if (!acc[dateKey]) {
@@ -46,6 +55,15 @@ const UpcomingTodos = () => {
     acc[dateKey].push(todo);
     return acc;
   }, {}) || {};  // Default to empty object instead of array for consistency
+
+  // const groupedTodosByDate = sortedUpcomingTodos.reduce<Record<string, Todo[]>>((acc, todo) => {
+  //   if (!todo.dueDate) return acc;
+
+  //   const dateKey = moment(todo.dueDate).startOf('day').toISOString();
+  //   acc[dateKey] = acc[dateKey] || [];
+  //   acc[dateKey].push(todo);
+  //   return acc;
+  // }, {});
 
 
   if (overdueTodos === undefined || inCompleteTodos === undefined || totalIncompleteTodos === undefined) {
