@@ -105,7 +105,7 @@ export const deleleProjectAndItsTasks = action({
         )
       )
 
-      const statuses = await promises
+      // const statuses = await promises
 
       await ctx.runMutation(api.projects.deleteProject, { projectId })
       // Promise.allSettled(promises).then(results => (
