@@ -83,7 +83,7 @@ export const getTodayTodos = query({
     // const userId = await handleUserId(ctx)
     const userId = await getUserId(ctx)
     const todayStart = moment().startOf("day")
-    const todayEnd = moment().endOf("day")
+    // const todayEnd = moment().endOf("day")
     const today = new Date()
 
     if (userId) {
@@ -102,8 +102,8 @@ export const getOverdueTodos = query({
   handler: async (ctx) => {
     // const userId = await handleUserId(ctx)
     const userId = await getUserId(ctx)
-    const todayStart = moment().startOf("day")
-    const todayEnd = moment().endOf("day")
+    // const todayStart = moment().startOf("day")
+    // const todayEnd = moment().endOf("day")
     const today = new Date()
     today.setHours(0, 0, 0, 0)
 
@@ -351,7 +351,7 @@ export const deleteAllCompletedTodoAndItsSubtasks = action({
           })
       )
 
-      const promises = Promise.allSettled(
+      await Promise.allSettled(
         allSubTasks2.map(async (result) =>
           (await result).map(async (subTask: Doc<"subtodos">) =>
             ctx.runMutation(api.subTodos.deleteSubTask, {
@@ -361,7 +361,7 @@ export const deleteAllCompletedTodoAndItsSubtasks = action({
         )
       )
 
-      const statuses = await promises
+      // const statuses = await promises
 
       // console.log("status: ", statuses)
 
