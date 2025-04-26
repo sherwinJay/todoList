@@ -11,12 +11,11 @@ import Image from 'next/image'
 
 
 const TodayTodos = ({ }) => {
+  const incompleteTodos = useQuery(api.todos.getInCompletedTodos)
   const dateToday = moment(new Date()).format("DD MMM")
   const dateNameToday = moment(new Date()).format("dddd")
   const todayStart = moment().startOf("day")
   const todayEnd = moment().endOf("day")
-
-  const incompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []
   const overdueTodos = incompleteTodos?.filter(todo => todo.dueDate < todayStart.valueOf()) || []
   const todayTodos = incompleteTodos?.filter(todo => todo.dueDate >= todayStart.valueOf() && todo.dueDate <= todayEnd.valueOf()) || []
   const totalTodos = todayTodos.length + overdueTodos.length

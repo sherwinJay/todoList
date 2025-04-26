@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 const InboxTodos = ({ }) => {
   const inCompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []
-  const totalIncompleteTodos = useQuery(api.todos.getTotalInCompleteTodos) ?? 0
+  const totalIncompleteTodos = useQuery(api.todos.getTotalInCompleteTodos)
 
   if (inCompleteTodos === undefined || totalIncompleteTodos === undefined) {
     return <Loader />
