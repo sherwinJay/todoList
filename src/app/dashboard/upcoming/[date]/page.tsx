@@ -5,9 +5,9 @@ interface pageProps {
   params: { date: string }
 }
 
-const page: FC<pageProps> = async ({ params }) => {
+const page: FC<pageProps> = ({ params }) => {
   // const pathname = usePathname()
-  const { date } = await params
+  const { date } = params
 
   return (
     <div className="px-4 relative">
