@@ -97,7 +97,7 @@ export const deleleProjectAndItsTasks = action({
       })
       // const allSubTasks = await ctx.runQuery(api.subTodos.getSubTodosByProjectId, { projectId})
 
-      const promises = Promise.allSettled(
+      await Promise.allSettled(
         allTasks.map(async (task: Doc<"todos">) =>
           ctx.runAction(api.todos.deleleTaskAndItsSubtasks, {
             taskId: task._id,
