@@ -8,11 +8,12 @@ import moment from 'moment'
 import CustomCollapsible from '../../components/customCollapsible/CustomCollapsible'
 import Link from 'next/link'
 import TotalTodos from '../components/totalTodos'
+import { Doc } from '../../../convex/_generated/dataModel'
 
-type Todo = {
-  // ... other properties
-  dueDate: string | number; // Accept both string and number
-};
+// type Todo = {
+//   // ... other properties
+//   dueDate: string | number; // Accept both string and number
+// };
 
 const UpcomingTodos = () => {
   const inCompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []
@@ -37,7 +38,7 @@ const UpcomingTodos = () => {
   //   return acc;
   // }, {}) ?? []
 
-  const groupedTodosByDate = sortedUpcomingTodos.reduce<Record<string, Todo[]>>((acc, todo) => {
+  const groupedTodosByDate = sortedUpcomingTodos.reduce<Record<string, Doc<"todos">[]>>((acc, todo) => {
     if (!todo.dueDate) return acc;  // handle cases where dueDate might be missing
 
     // Use moment directly on the dueDate string if it's in ISO format
