@@ -44,7 +44,7 @@ const TodoItem: FC<TodoItemProps> = ({ todosData, handleOnChange, handleDelete }
                     isCompleted && 'text-gray-400 line-through',
                   )}>
                     <p>{taskName}</p>
-                    <p className='text-xs text-gray-400 line-clamp-1 inbox_list bullet_list_style' dangerouslySetInnerHTML={{ __html: description }} />
+                    <p className='text-xs text-gray-400 line-clamp-1 inbox_list bullet_list_style' dangerouslySetInnerHTML={{ __html: description! }} />
                     {!isSubTodo && (<div className='flex gap-3 items-center mt-1'>
                       <TotalSubTodos isDialog={false} id={_id} />
                       {isTaskOverdue && !isCompleted && (
