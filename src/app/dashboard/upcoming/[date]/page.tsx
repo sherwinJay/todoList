@@ -1,13 +1,10 @@
 import TodosByDate from '@/features/todos/todosByDate'
-import { FC } from 'react'
 
-interface pageProps {
-  params: { date: string }
-}
+type PageProps = Promise<{ date: string }>
 
-const page: FC<pageProps> = ({ params }) => {
+const UpcomingByDatePage = async ({ params }: { params: PageProps }) => {
   // const pathname = usePathname()
-  const { date } = params
+  const { date } = await params
 
   return (
     <div className="px-4 relative">
@@ -17,4 +14,4 @@ const page: FC<pageProps> = ({ params }) => {
     </div >)
 }
 
-export default page
+export default UpcomingByDatePage
