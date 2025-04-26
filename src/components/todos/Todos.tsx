@@ -15,7 +15,6 @@ const Todos: FC<TodosProps> = ({ items }) => {
 
   const checkATodo = useMutation(api.todos.checkATodo)
   const unCheckATodo = useMutation(api.todos.unCheckATodo)
-  // const deleteTask = useMutation(api.todos.deleteTodo)
   const deleteTaskAndItsSubtasks = useAction(api.todos.deleleTaskAndItsSubtasks)
 
   const handleOnChangeTodo = (task: Doc<'todos'>) => {
