@@ -281,15 +281,13 @@ export const deleleTaskAndItsSubtasks = action({
         parentId: taskId,
       })
 
-      const promises = Promise.allSettled(
+      await Promise.allSettled(
         allSubTasks.map(async (subTask: Doc<"subtodos">) =>
           ctx.runMutation(api.subTodos.deleteSubTask, {
             subTaskId: subTask._id,
           })
         )
       )
-
-      const statuses = await promises
 
       await ctx.runMutation(api.todos.deleteTodo, { taskId })
     } catch (error) {
