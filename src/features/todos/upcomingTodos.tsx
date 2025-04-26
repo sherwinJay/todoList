@@ -18,7 +18,6 @@ const UpcomingTodos = () => {
   const sortedUpcomingTodos = upcomingTodos.sort((a, b) => a.dueDate - b.dueDate)
   const totalIncompleteTodos = useQuery(api.todos.getTotalInCompleteTodos)
 
-
   const groupedTodosByDate = sortedUpcomingTodos.reduce<Record<string, Doc<"todos">[]>>((acc, todo) => {
     if (!todo.dueDate) return acc;  // handle cases where dueDate might be missing
 

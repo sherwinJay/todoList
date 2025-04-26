@@ -7,8 +7,6 @@ import { api } from '../../../convex/_generated/api'
 import { Todos } from '@/components'
 import moment from 'moment'
 import Image from 'next/image'
-// import designerWorking from '../../../public/assets/images/undraw_designer_efwz.svg'
-
 
 const TodayTodos = ({ }) => {
   const incompleteTodos = useQuery(api.todos.getInCompletedTodos)
