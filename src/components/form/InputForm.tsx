@@ -29,7 +29,6 @@ import CustomEditor from "./CustomEditor"
 import { priorityData } from "@/data/data"
 import { useParams } from "next/navigation"
 import { Separator } from "../ui/separator"
-import { useSidebar } from "../ui/sidebar"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 type InputFormType = {
