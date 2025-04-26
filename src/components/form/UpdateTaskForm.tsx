@@ -17,17 +17,27 @@ import { Popover } from '@radix-ui/react-popover'
 import { PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Button } from '../ui/button'
 import { checkIsSubTodo, cn } from '@/lib/utils'
-import { CalendarIcon, Flag, Text as TextLucide } from "lucide-react"
+import { CalendarIcon, Flag, SendHorizonal, Text as TextLucide, X } from "lucide-react"
 import { format } from 'date-fns'
 import { Calendar } from '../ui/calendar'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { priorityData } from "@/data/data"
 import { Separator } from '../ui/separator'
 import { CardFooter } from '../ui/card'
+import { useIsMobile } from '@/hooks/use-mobile'
 
 interface UpdateTaskFormProps {
   parentTask: Doc<'todos'> | Doc<"subtodos">,
   hideModal: () => void
+}
+
+export function getFirstAndLast(str: string) {
+  if (str.length === 0) return "String is empty";
+
+  const first = str[0];
+  const last = str[str.length - 1];
+
+  return `${first}${last}`;
 }
 
 const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
@@ -42,6 +52,7 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
   const labels = useQuery(api.labels.getLabels) ?? []
   const projects = useQuery(api.projects.getProjects) ?? []
   const isSubTodo = checkIsSubTodo(parentTask)
+  const isMobile = useIsMobile()
 
   const defaultValues = {
     taskName,
@@ -106,6 +117,9 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
     onSubmit(data)
   }
 
+  console.log(stringPriority)
+  console.log(getFirstAndLast(stringPriority!))
+
   return (
     <Form {...form}>
       <form
@@ -148,7 +162,7 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
         {// * hide other fields for subtask form
           !isSubTodo && (
             <>
-              <div className="flex md:flex-row gap-2">
+              <div className="flex flex-col md:flex-row gap-3 md:gap-2">
                 <FormField
                   control={form.control}
                   name="dueDate"
@@ -161,7 +175,7 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
                               variant={"outline"}
                               color="orange"
                               className={cn(
-                                "flex gap-2 font-normal text-left! border-gray-200 dark:border-gray-700 text-xs",
+                                "justify-start flex gap-2 font-normal border-gray-200 dark:border-gray-700 text-xs",
                                 !field.value && "text-muted-foreground"
                               )}
                             >
@@ -198,7 +212,7 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
                     <FormItem>
                       <Select onValueChange={field.onChange} defaultValue={stringPriority}>
                         <FormControl>
-                          <SelectTrigger className="border-gray-200 dark:border-gray-700 text-xs">
+                          <SelectTrigger className="border-gray-200 dark:border-gray-700 text-xs w-full">
                             <SelectValue placeholder="Select a priority" />
                           </SelectTrigger>
                         </FormControl>
@@ -222,7 +236,7 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
                     <FormItem>
                       <Select onValueChange={field.onChange} defaultValue={labelId || field.value}>
                         <FormControl>
-                          <SelectTrigger className="border-gray-200 dark:border-gray-700 text-xs">
+                          <SelectTrigger className="border-gray-200 dark:border-gray-700 text-xs w-full">
                             <SelectValue placeholder="Select a label" />
                           </SelectTrigger>
                         </FormControl>
@@ -242,8 +256,8 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
           )
         }
         <Separator />
-        <CardFooter className={cn("flex flex-col lg:flex-row lg:justify-between gap-2 items-center px-0 pb-2",
-          isSubTodo && 'lg:justify-end')
+        <CardFooter className={cn("flex flex-row justify-between gap-2 items-center px-0 pb-2",
+          isSubTodo && 'justify-end')
         }>
 
           {/* remove project field in subtasks */}
@@ -268,19 +282,21 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
               </FormItem>
             )}
           />)}
-          <div className='flex gap-3'>
+          <div className='flex gap-3 justify-end'>
             <Button
               className='px-6 border-orange-400! hover:bg-orange-200! hover:border-orange-200! dark:hover:text-black cursor-pointer text-xs'
               variant={'outline'}
               onClick={hideModal}
             >
-              Cancel
+              {isMobile ? <X /> : 'Cancel'}
+              {/* Cancel */}
             </Button>
             <Button
               className='px-6 bg-orange-400 text-white hover:bg-orange-500 cursor-pointer text-xs'
               type='submit'
             >
-              {isSubTodo ? 'Update Sub Task' : 'Update Task'}
+              {isMobile ? <SendHorizonal /> : isSubTodo ? 'Update Sub Task' : 'Update Task'}
+              {/* {parentId ? 'Add Sub Task' : 'Add Task'} */}
             </Button>
           </div>
         </CardFooter>

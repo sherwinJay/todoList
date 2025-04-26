@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { CalendarIcon, Flag, Text as TextLucide } from "lucide-react"
+import { CalendarIcon, Flag, SendHorizonal, Text as TextLucide, X } from "lucide-react"
 import { CardFooter } from "../ui/card"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 import { Calendar } from "../ui/calendar"
@@ -29,6 +29,8 @@ import CustomEditor from "./CustomEditor"
 import { priorityData } from "@/data/data"
 import { useParams } from "next/navigation"
 import { Separator } from "../ui/separator"
+import { useSidebar } from "../ui/sidebar"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 type InputFormType = {
   hideModal: () => void
@@ -51,6 +53,7 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
   // * mutations
   const createATodoMutation = useMutation(api.todos.createATodo)
   const createASubTodoMutation = useMutation(api.subTodos.createASubTodo)
+  const isMobile = useIsMobile()
 
   // const createATodoAndEmbeddings = useAction(api.todos.createTodoAndEmbeddings)
   // const createASubTodoAndEmbeddings = useAction(api.subTodos.createSubTodoAndEmbeddings)
@@ -155,7 +158,7 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
         {// * hide other fields for subtask form
           !parentId && (
             <>
-              <div className="flex md:flex-row gap-2">
+              <div className="flex flex-col md:flex-row gap-3 md:gap-2">
                 <FormField
                   control={form.control}
                   name="dueDate"
@@ -168,7 +171,7 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
                               variant={"outline"}
                               color="orange"
                               className={cn(
-                                "flex gap-2 font-normal text-left! border-gray-200 dark:border-gray-700 text-xs",
+                                "justify-start flex gap-2 font-normal border-gray-200 dark:border-gray-700 text-xs",
                                 !field.value && "text-muted-foreground"
                               )}
                             >
@@ -205,13 +208,13 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
                     <FormItem>
                       <Select onValueChange={field.onChange} defaultValue={priority}>
                         <FormControl>
-                          <SelectTrigger className="border-gray-200 dark:border-gray-700 text-xs">
+                          <SelectTrigger className="border-gray-200 dark:border-gray-700 text-xs w-full">
                             <SelectValue placeholder="Select a priority" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
                           {priorityData.map((item, idx) => (
-                            <SelectItem key={idx} value={item.priority} className="text-xs">
+                            <SelectItem key={idx} value={item.priority} className='text-xs'>
                               <Flag color={item.color} />
                               {`Priority ${item.priority}`}
                             </SelectItem>
@@ -229,13 +232,13 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
                     <FormItem>
                       <Select onValueChange={field.onChange} defaultValue={labelId || field.value}>
                         <FormControl>
-                          <SelectTrigger className="border-gray-200 dark:border-gray-700 text-xs">
+                          <SelectTrigger className="border-gray-200 dark:border-gray-700 text-xs w-full">
                             <SelectValue placeholder="Select a label" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
                           {labels.map((label: Doc<"labels">) => (
-                            <SelectItem key={label._id} value={label._id}>{label.name}</SelectItem>
+                            <SelectItem key={label._id} value={label._id} className='text-xs'>{label.name}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
@@ -249,7 +252,7 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
           )
         }
         <Separator />
-        <CardFooter className="flex flex-col lg:flex-row lg:justify-between gap-2 items-center px-0 pb-2">
+        <CardFooter className="flex justify-between gap-2 items-center px-0 pb-2">
           <FormField
             control={form.control}
             name="projectId"
@@ -277,13 +280,15 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
               variant={'outline'}
               onClick={hideModal}
             >
-              Cancel
+              {isMobile ? <X /> : 'Cancel'}
+              {/* Cancel */}
             </Button>
             <Button
               className='px-6 bg-orange-400 text-white hover:bg-orange-500 cursor-pointer text-xs'
               type='submit'
             >
-              {parentId ? 'Add Sub Task' : 'Add Task'}
+              {isMobile ? <SendHorizonal /> : parentId ? 'Add Sub Task' : 'Add Task'}
+              {/* {parentId ? 'Add Sub Task' : 'Add Task'} */}
             </Button>
           </div>
         </CardFooter>

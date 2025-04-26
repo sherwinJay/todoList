@@ -13,15 +13,16 @@ const MainNav = ({ }) => {
 
   const pathname = usePathname()
   const toggleAddForm = useAddTaskStore(state => state.toggleAddForm)
+  const { open, isMobile, toggleSidebar } = useSidebar()
 
   const handleAddForm = () => {
     if (open && isMobile) {
       toggleAddForm()
       toggleSidebar()
+    } else {
+      toggleAddForm()
     }
   }
-
-  const { open, isMobile, toggleSidebar } = useSidebar()
   return (
     <SidebarGroup>
       <SidebarMenu>

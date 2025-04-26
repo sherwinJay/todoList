@@ -25,6 +25,8 @@ const ProjectsNav = ({ }) => {
     if (open && isMobile) {
       toggleProjectForm()
       toggleSidebar()
+    } else {
+      toggleProjectForm()
     }
   }
 
