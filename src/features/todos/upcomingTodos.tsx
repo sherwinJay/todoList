@@ -9,11 +9,6 @@ import CustomCollapsible from '../../components/customCollapsible/CustomCollapsi
 import Link from 'next/link'
 import TotalTodos from '../components/totalTodos'
 
-interface Todo {
-  // ... your todo interface properties
-  dueDate: string; // or Date, depending on your data
-}
-
 const UpcomingTodos = () => {
   const inCompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []
   const todayStart = moment().startOf("day")
@@ -37,7 +32,7 @@ const UpcomingTodos = () => {
   //   return acc;
   // }, {}) ?? []
 
-  const groupedTodosByDate = sortedUpcomingTodos.reduce<Record<string, Todo[]>>((acc, todo) => {
+  const groupedTodosByDate = sortedUpcomingTodos.reduce((acc, todo) => {
     if (!todo.dueDate) return acc;  // handle cases where dueDate might be missing
 
     // Use moment directly on the dueDate string if it's in ISO format
@@ -51,7 +46,6 @@ const UpcomingTodos = () => {
     acc[dateKey].push(todo);
     return acc;
   }, {}) || {};  // Default to empty object instead of array for consistency
-
 
 
   if (overdueTodos === undefined || inCompleteTodos === undefined || totalIncompleteTodos === undefined) {
