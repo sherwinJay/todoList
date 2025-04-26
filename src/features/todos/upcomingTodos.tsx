@@ -9,6 +9,11 @@ import CustomCollapsible from '../../components/customCollapsible/CustomCollapsi
 import Link from 'next/link'
 import TotalTodos from '../components/totalTodos'
 
+interface Todo {
+  // ... your todo interface properties
+  dueDate: string; // or Date, depending on your data
+}
+
 const UpcomingTodos = () => {
   const inCompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []
   const todayStart = moment().startOf("day")
@@ -16,21 +21,36 @@ const UpcomingTodos = () => {
   const upcomingTodos = inCompleteTodos?.filter(todo => todo.dueDate >= todayStart.valueOf()) || []
   const sortedUpcomingTodos = upcomingTodos.sort((a, b) => a.dueDate - b.dueDate)
   const totalIncompleteTodos = useQuery(api.todos.getTotalInCompleteTodos) ?? 0
-  const groupedTodosByDate = sortedUpcomingTodos.reduce((acc, todo) => {
-    const { dueDate } = todo;
-    const _dueDate = new Date(dueDate)
-    const resetDueDateHours = moment(_dueDate).startOf("day")
+  // const groupedTodosByDate = sortedUpcomingTodos.reduce((acc, todo) => {
+  //   const { dueDate } = todo;
+  //   const _dueDate = new Date(dueDate)
+  //   const resetDueDateHours = moment(_dueDate).startOf("day")
 
-    // * If the dueDate key doesn't exist in the accumulator, create it as an empty array
-    if (!acc[resetDueDateHours]) {
-      acc[resetDueDateHours] = [];
+  //   // * If the dueDate key doesn't exist in the accumulator, create it as an empty array
+  //   if (!acc[resetDueDateHours]) {
+  //     acc[resetDueDateHours] = [];
+  //   }
+
+  //   // * Push the todo item into the respective dueDate group
+  //   acc[resetDueDateHours].push(todo);
+  //   // * acc[resetDueDateHours] = (acc[resetDueDateHours] || []).concat(todo)
+  //   return acc;
+  // }, {}) ?? []
+
+  const groupedTodosByDate = sortedUpcomingTodos.reduce<Record<string, Todo[]>>((acc, todo) => {
+    if (!todo.dueDate) return acc;  // handle cases where dueDate might be missing
+
+    // Use moment directly on the dueDate string if it's in ISO format
+    const dateKey = moment(todo.dueDate).startOf('day').toISOString();
+
+    // Initialize the array if it doesn't exist
+    if (!acc[dateKey]) {
+      acc[dateKey] = [];
     }
 
-    // * Push the todo item into the respective dueDate group
-    acc[resetDueDateHours].push(todo);
-    // * acc[resetDueDateHours] = (acc[resetDueDateHours] || []).concat(todo)
+    acc[dateKey].push(todo);
     return acc;
-  }, {}) ?? []
+  }, {}) || {};  // Default to empty object instead of array for consistency
 
 
 
