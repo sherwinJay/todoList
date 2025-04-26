@@ -1,6 +1,6 @@
 "use client"
 
-import { SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar'
+import { SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '../ui/sidebar'
 import { navItems } from '@/data/mainNavItems'
 import { Collapsible, CollapsibleTrigger } from '../ui/collapsible'
 import { usePathname } from 'next/navigation'
@@ -13,17 +13,26 @@ const MainNav = ({ }) => {
 
   const pathname = usePathname()
   const toggleAddForm = useAddTaskStore(state => state.toggleAddForm)
+
+  const handleAddForm = () => {
+    if (open && isMobile) {
+      toggleAddForm()
+      toggleSidebar()
+    }
+  }
+
+  const { open, isMobile, toggleSidebar } = useSidebar()
   return (
     <SidebarGroup>
       <SidebarMenu>
         <SidebarMenuItem>
           <Collapsible>
             <CollapsibleTrigger asChild>
-              <SidebarMenuButton tooltip='Add task' className='flex items-center gap-1.5' onClick={toggleAddForm}>
-                <div className='bg-orange-400 p-[2px] rounded-full'>
+              <SidebarMenuButton tooltip='Add task' className='flex items-center gap-1.5' onClick={handleAddForm}>
+                <div className='bg-orange-400 p-[2px] md:p-[1px] rounded-full'>
                   <PlusIcon className='w-[12px] h-[12px] md:w-[14px] md:h-[14px]' />
                 </div>
-                <span className='text-[12px] md:text-[14px]'>Add Task</span>
+                <span className='text-[14px]'>Add Task</span>
               </SidebarMenuButton>
             </CollapsibleTrigger>
           </Collapsible>
@@ -39,7 +48,11 @@ const MainNav = ({ }) => {
               <CollapsibleTrigger asChild>
                 <SidebarMenuButton tooltip={navItem.name}>
 
-                  <Link href={navItem.link} className={cn('flex gap-2 items-center', pathname === navItem.link && 'text-orange-400')}>
+                  <Link
+                    href={navItem.link}
+                    className={cn('flex gap-2 items-center', pathname === navItem.link && 'text-orange-400')}
+                    onClick={() => open && isMobile && toggleSidebar()}
+                  >
                     {navItem.icon}
                     {navItem.name}
                   </Link>

@@ -1,6 +1,6 @@
 "use client"
 
-import { SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar'
+import { SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '../ui/sidebar'
 import { Collapsible, CollapsibleTrigger } from '../ui/collapsible'
 import { useParams, usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -19,6 +19,14 @@ const ProjectsNav = ({ }) => {
   const projects = useQuery(api.projects.getProjects) ?? []
   // const [isShowProjectForm, setIsShowProjectForm] = useState<boolean>(false)
   const toggleProjectForm = useAddProjectStore(state => state.toggleAddProject)
+  const { open, isMobile, toggleSidebar } = useSidebar()
+
+  const handleProjectForm = () => {
+    if (open && isMobile) {
+      toggleProjectForm()
+      toggleSidebar()
+    }
+  }
 
   // const hideModal = () => setIsShowProjectForm(false)
 
@@ -27,8 +35,14 @@ const ProjectsNav = ({ }) => {
       <SidebarGroup>
         <SidebarMenu>
           <li className='flex items-center justify-between px-2 mb-2'>
-            <Link href={"/dashboard/projects"} className={cn('font-bold', pathname === '/dashboard/projects' && "text-orange-400")}>My Projects</Link>
-            <Plus onClick={toggleProjectForm} className='w-5 h-5 cursor-pointer hover:bg-orange-400 rounded-full' />
+            <Link
+              href={"/dashboard/projects"}
+              className={cn('font-bold', pathname === '/dashboard/projects' && "text-orange-400")}
+              onClick={() => open && isMobile && toggleSidebar()}
+            >
+              My Projects
+            </Link>
+            <Plus onClick={handleProjectForm} className='w-5 h-5 cursor-pointer hover:bg-orange-400 rounded-full' />
           </li>
           {projects.map((project) => (
             <Collapsible
@@ -41,7 +55,11 @@ const ProjectsNav = ({ }) => {
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton tooltip={project.name}>
 
-                    <Link href={`/dashboard/projects/${project._id}`} className={cn('flex gap-2 items-center', paramsProjectId === project._id && 'text-orange-400')}>
+                    <Link
+                      href={`/dashboard/projects/${project._id}`}
+                      className={cn('flex gap-2 items-center', paramsProjectId === project._id && 'text-orange-400')}
+                      onClick={() => open && isMobile && toggleSidebar()}
+                    >
                       <Hash className='w-4 h-4' />
                       {project.name}
                     </Link>
