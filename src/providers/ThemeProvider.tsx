@@ -7,10 +7,12 @@ import { useAddProjectStore } from '@/stores/projectFormDialogStore';
 import { Geist, Geist_Mono } from 'next/font/google';
 import React, { ReactNode, useEffect, useState, createContext } from 'react'
 
-export const ThemeContext = createContext({
-  theme: '',
-  setTheme: () => { }
-})
+type ThemeContextType = {
+  theme: 'light' | 'dark'
+  setTheme: React.Dispatch<React.SetStateAction<"light" | "dark">>
+}
+
+export const ThemeContext = createContext<ThemeContextType>('dark' as unknown as ThemeContextType)
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
