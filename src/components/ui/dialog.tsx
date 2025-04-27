@@ -175,7 +175,7 @@ const InnerDialogContent = React.forwardRef<
           {...props}
         >
           <div ref={contentRef}>{children}</div>
-          <InnerDialogClose className="absolute bg-[#f39c16] hover:bg-orange-400 right-4 top-4 rounded-full ring-0 p-[2px] border-[1px] opacity-00 ring-offset-background transition-opacity hover:opacity-100 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground cursor-pointer">
+          <InnerDialogClose className="absolute bg-[#f39c16] hover:bg-orange-400 right-2 top-2 md:right-4 md:top-4 rounded-full ring-0 p-[2px] border-[1px] opacity-00 ring-offset-background transition-opacity hover:opacity-100 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground cursor-pointer">
             <X className="h-4 w-4" />
             <span className="sr-only">Close</span>
           </InnerDialogClose>

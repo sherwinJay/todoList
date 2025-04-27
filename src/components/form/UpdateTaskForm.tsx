@@ -31,14 +31,14 @@ interface UpdateTaskFormProps {
   hideModal: () => void
 }
 
-export function getFirstAndLast(str: string) {
-  if (str.length === 0) return "String is empty";
+// export function getFirstAndLast(str: string) {
+//   if (str.length === 0) return "String is empty";
 
-  const first = str[0];
-  const last = str[str.length - 1];
+//   const first = str[0];
+//   const last = str[str.length - 1];
 
-  return `${first}${last}`;
-}
+//   return `${first}${last}`;
+// }
 
 const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
 
@@ -116,9 +116,6 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
   const handleFormSubmit = (data: TodoFormSchema) => {
     onSubmit(data)
   }
-
-  console.log(stringPriority)
-  console.log(getFirstAndLast(stringPriority!))
 
   return (
     <Form {...form}>

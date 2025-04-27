@@ -11,7 +11,7 @@ import { useQuery } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
 import { cn } from '@/lib/utils'
 import { AddTaskWrapper, SubTodosList, CustomCheckbox } from "@/components"
-import { ScrollArea } from '../ui/scroll-area'
+// import { ScrollArea } from '../ui/scroll-area'
 import TotalSubTodos from '../../features/components/TotalSubTodos'
 
 type AddTaskDialogProps = {
@@ -76,7 +76,7 @@ const AddTaskDialog: FC<AddTaskDialogProps> = ({ todosData, handleOnChange }) =>
   }, [getLabels?.name, getProjects?.name, dueDate, priority])
 
   return (
-    <DialogContent className="max-w-4xl! lg:h-4/6 flex flex-col md:flex-row lg:justify-between">
+    <DialogContent className="max-w-4xl! h-full lg:h-4/6 flex flex-col md:flex-row lg:justify-between overflow-y-auto md:overflow-y-auto">
       <DialogHeader className='w-full relative'>
         <div className='flex gap-2'>
           <CustomCheckbox
@@ -93,7 +93,7 @@ const AddTaskDialog: FC<AddTaskDialogProps> = ({ todosData, handleOnChange }) =>
           className={cn('bullet_list_style pl-6', isCompleted && 'text-gray-400 line-through')}
           dangerouslySetInnerHTML={{ __html: description! }}
         />
-        <div className='flex items-center gap-1 mt-12 border-b-2 border-gray-100 dark:border-gray-600 pb-2 flex-wrap sm:justify-between lg:gap-0'>
+        <div className='flex items-center gap-1 mt-12 border-b-2 border-gray-100 dark:border-gray-600 pb-2 flex-wrap justify-between lg:gap-0'>
           <div className='flex gap-1 items-center'>
             <ChevronDown className='w-5 h-5 text-primary' />
             <p className='font-bold flex text-sm text-black dark:text-white border-none mr-2'>Sub-tasks</p>
@@ -107,8 +107,8 @@ const AddTaskDialog: FC<AddTaskDialogProps> = ({ todosData, handleOnChange }) =>
             {isShowCompletedSubTask ? 'Hide Completed' : 'Show Completed'}
           </Button>
         </div>
-        <div className='pl-4 overflow-y-hidden'>
-          <ScrollArea className="h-[630px] w-full pr-4">
+        <div className='pl-4 overflow-y-auto scrollbar'>
+          <div className="w-full pr-4">
             <div className="">
               <InnerDialog>
                 <InnerDialogTrigger asChild>
@@ -129,7 +129,7 @@ const AddTaskDialog: FC<AddTaskDialogProps> = ({ todosData, handleOnChange }) =>
               // handleCheck={unCheckSubTodoMutation}
               />
             )}
-          </ScrollArea>
+          </div>
         </div>
       </DialogHeader>
 

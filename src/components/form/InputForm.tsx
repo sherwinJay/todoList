@@ -279,7 +279,7 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
               variant={'outline'}
               onClick={hideModal}
             >
-              {isMobile ? <X /> : 'Cancel'}
+              {isMobile ? <X className="w-4 h-4" /> : 'Cancel'}
               {/* Cancel */}
             </Button>
             <Button
