@@ -1,4 +1,5 @@
 import { ProjectsLists } from '@/components'
+import { Metadata } from 'next';
 
 const ProjectsPage = ({ }) => {
 
@@ -46,5 +47,10 @@ const ProjectsPage = ({ }) => {
     </div>
   )
 }
+
+export const metadata: Metadata = {
+  title: "Projects – Todolist",
+};
+
 
 export default ProjectsPage

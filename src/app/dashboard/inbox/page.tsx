@@ -1,4 +1,9 @@
 import InboxTodos from "@/features/todos/inboxTodos"
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Inbox – Todolist",
+};
 
 export default function Page() {
   return (

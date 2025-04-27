@@ -1,4 +1,5 @@
 import CompletedTodos from '@/features/todos/completedTodos'
+import { Metadata } from 'next';
 
 const CompletedPage = ({ }) => {
 
@@ -14,5 +15,10 @@ const CompletedPage = ({ }) => {
     </div>
   )
 }
+
+export const metadata: Metadata = {
+  title: "Completed – Todolist",
+};
+
 
 export default CompletedPage

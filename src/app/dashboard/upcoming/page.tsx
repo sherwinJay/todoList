@@ -1,4 +1,5 @@
 import UpcomingTodos from '@/features/todos/upcomingTodos'
+import { Metadata } from 'next';
 
 const UpcomingPage = ({ }) => {
   return (
@@ -13,5 +14,9 @@ const UpcomingPage = ({ }) => {
     </div>
   )
 }
+
+export const metadata: Metadata = {
+  title: "Upcoming – Todolist",
+};
 
 export default UpcomingPage

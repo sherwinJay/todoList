@@ -1,4 +1,6 @@
 import TodayTodos from '@/features/todos/todayTodos'
+import { Metadata } from 'next';
+
 
 const TodayPage = ({ }) => {
   return (
@@ -13,5 +15,10 @@ const TodayPage = ({ }) => {
     </div>
   )
 }
+
+export const metadata: Metadata = {
+  title: "Today – Todolist",
+};
+
 
 export default TodayPage

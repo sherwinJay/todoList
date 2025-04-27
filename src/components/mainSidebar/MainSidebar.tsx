@@ -13,7 +13,7 @@ const MainSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
         {/* <NavMain items={data.navMain} /> */}
         <div className='my-5 flex items-center justify-center gap-1' >
           <SquarePen width={20} height={20} />
-          <h1 className='text-2xl font-bold'>Todos</h1>
+          <h1 className='text-2xl font-bold'>Todolist</h1>
         </div>
         <nav>
           <MainNav />
