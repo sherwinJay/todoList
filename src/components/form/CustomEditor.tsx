@@ -48,7 +48,7 @@ const CustomEditor: FC<CustomEditorProps> = ({ testData, onChange }) => {
           </button>
         ))}
       </BubbleMenu>}
-      <EditorContent className='tiptap_editor' editor={editor} placeholder="description" />
+      <EditorContent className='tiptap_editor text-left!' editor={editor} placeholder="description" />
     </div>
   )
 }

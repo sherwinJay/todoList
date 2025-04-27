@@ -133,7 +133,7 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
                   placeholder="Enter your Task name"
                   {...field}
                   required
-                  className="border-0 font-semibold text-lg focus-visible:ring-0 shadow-none"
+                  className="border-0 font-semibold text-md lg:text-lg focus-visible:ring-0 shadow-none"
                 />
               </FormControl>
             </FormItem>
@@ -145,7 +145,7 @@ export default function InputForm({ hideModal, parentTask }: InputFormType) {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <div className="flex items-start mb-2">
+                <div className="flex items-start mb-2 text-left">
                   <TextLucide className="ml-auto h-4 w-4 opacity-50" />
                   <CustomEditor {...field} testData={field.value} onChange={field.onChange} />
                 </div>

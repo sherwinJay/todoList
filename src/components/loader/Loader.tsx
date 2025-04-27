@@ -1,7 +1,7 @@
 
 const Loader = ({ }) => {
   return (
-    <section className="grid place-content-center gap-8 h-full">
+    <section className="grid place-content-center gap-8 h-full min-h-[350px]">
       <div className='flex flex-col justify-center items-center gap-3.5'>
         <span className="loader">
         </span>

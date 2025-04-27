@@ -135,7 +135,7 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
                   placeholder="Enter your Task name"
                   {...field}
                   required
-                  className="border-0 font-semibold text-lg focus-visible:ring-0 shadow-none"
+                  className="border-0 font-semibold text-md lg:text-lg focus-visible:ring-0 shadow-none"
                 />
               </FormControl>
             </FormItem>

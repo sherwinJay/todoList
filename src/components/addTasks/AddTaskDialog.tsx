@@ -90,7 +90,7 @@ const AddTaskDialog: FC<AddTaskDialogProps> = ({ todosData, handleOnChange }) =>
           </DialogTitle>
         </div>
         <DialogDescription
-          className={cn('bullet_list_style pl-6', isCompleted && 'text-gray-400 line-through')}
+          className={cn('bullet_list_style pl-6 text-left', isCompleted && 'text-gray-400 line-through')}
           dangerouslySetInnerHTML={{ __html: description! }}
         />
         <div className='flex items-center gap-1 mt-12 border-b-2 border-gray-100 dark:border-gray-600 pb-2 flex-wrap justify-between lg:gap-0'>
