@@ -9,6 +9,7 @@ import CustomCollapsible from '../../components/customCollapsible/CustomCollapsi
 import Link from 'next/link'
 import TotalTodos from '../components/totalTodos'
 import { Doc } from '../../../convex/_generated/dataModel'
+import Image from 'next/image'
 
 const UpcomingTodos = () => {
   const inCompleteTodos = useQuery(api.todos.getInCompletedTodos)
@@ -75,9 +76,25 @@ const UpcomingTodos = () => {
         })}
       </div>
 
-      {
-        totalIncompleteTodos === 0 && (<AddTaskWrapper />)
-      }
+      {totalIncompleteTodos === 0 && (
+        <>
+          <AddTaskWrapper />
+          <div className='flex gap-3 items-center flex-col mt-20'>
+            <Image
+              src='../assets/images/undraw_online-calendar_zaoc.svg'
+              alt="woman reading on a tree with swing"
+              width={300}
+              height={300}
+            />
+            <div className='text-center flex flex-col items-center mt-4'>
+              <h3 className='font-semibold text-md'>No tasks in the upcoming days</h3>
+              <p className='text-sm mt-2 w-[250px] leading-6'>
+                All your upcoming tasks will be displayed here.
+              </p>
+            </div>
+          </div>
+        </>
+      )}
     </>
   )
 }

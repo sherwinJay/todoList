@@ -8,6 +8,7 @@ import { Todos } from '@/components'
 import CustomCollapsible from '../../components/customCollapsible/CustomCollapsible'
 import TotalTodos from '../components/totalTodos'
 import { toast } from 'sonner'
+import Image from 'next/image'
 
 const CompletedTodos = ({ }) => {
   const completedTodos = useQuery(api.todos.getCompletedTodos) ?? []
@@ -37,18 +38,35 @@ const CompletedTodos = ({ }) => {
       />
 
       {/* Main Task */}
-      <div className='relative'>
-        <CustomCollapsible title='Main Tasks'>
-          {totalCompletedTasks > 0 ? (<Todos items={completedTodos} />) : (
-            <div className='grid place-content-center py-15'>
-              <p>No completed tasks</p>
-            </div>
-          )}
-        </CustomCollapsible>
-        <div className='absolute top-4 right-0'>
-          <CustomDropdownDelete title='Clear Main Tasks' handleConfirmDelete={() => setShowConfirmDelete(true)} disabled={completedTodos.length === 0} />
+
+
+      {totalCompletedTasks > 0 ? (
+        <div className='relative'>
+          <CustomCollapsible title='Main Tasks'>
+            <Todos items={completedTodos} />
+          </CustomCollapsible>
+          <div className='absolute top-4 right-0'>
+            <CustomDropdownDelete title='Clear Main Tasks' handleConfirmDelete={() => setShowConfirmDelete(true)} disabled={completedTodos.length === 0} />
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className='flex gap-3 items-center flex-col mt-20'>
+          <Image
+            src="../assets/images/undraw_accept-tasks_syrr.svg"
+            alt="man standing near the post"
+            width={300}
+            height={300}
+          />
+          <div className='text-center flex flex-col items-center mt-4'>
+            <h3 className='font-semibold text-md'>You cleared all your tasks</h3>
+            <p className='text-sm mt-2 w-[250px] leading-6'>
+              See all changes that have been made in your account.
+            </p>
+          </div>
+        </div>
+      )}
+
+
 
       {showConfirmDelete && (
         <CustomDialog

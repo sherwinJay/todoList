@@ -33,8 +33,8 @@ const InboxTodos = ({ }) => {
           <Image
             src='../assets/images/undraw_tree-swing_5010.svg'
             alt="woman reading on a tree with swing"
-            width={350}
-            height={350}
+            width={300}
+            height={300}
           />
           <div className='text-center flex flex-col items-center mt-4'>
             <h3 className='font-semibold text-md'>Your peace of mind is priceless</h3>

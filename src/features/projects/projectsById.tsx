@@ -8,6 +8,7 @@ import { api } from '../../../convex/_generated/api'
 import { AddTaskWrapper, CustomDialog, CustomDropdownDelete, Loader, Todos } from '@/components'
 import TotalTodos from '../components/totalTodos'
 import { toast } from 'sonner'
+import Image from 'next/image'
 
 const ProjectsById = ({ }) => {
   const { projectId } = useParams<{ projectId: Id<'projects'> }>()
@@ -75,7 +76,24 @@ const ProjectsById = ({ }) => {
       <Todos items={todosByProject} />
 
       {totalTodosByProject === 0 && (
-        <AddTaskWrapper />
+        <>
+          <AddTaskWrapper />
+          <div className='flex gap-3 items-center flex-col mt-20'>
+            <Image
+              src='../../assets/images/undraw_designer-life_6g9c.svg'
+              alt="graphic designer girl working"
+              width={300}
+              height={300}
+            />
+            <div className='text-center flex flex-col items-center mt-4'>
+              <h3 className='font-semibold text-md'>Start small (or dream big)...</h3>
+              <p className='text-sm mt-2 w-[250px] leading-6'>
+                Add your tasks to get started with your project.
+              </p>
+            </div>
+          </div>
+        </>
+
       )}
 
       {showConfirmDelete && (

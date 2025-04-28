@@ -374,7 +374,7 @@
     height: 27px;
     display: inline-block;
     position: relative;
-    background: #fff;
+    background: var(--accent-foreground);
     border-radius: 15% 15% 35% 35%;
   }
   .loader::after {
@@ -383,7 +383,7 @@
     position: absolute;
     left: 32px;
     top: 5px;
-    border: 2px solid #fff;
+    border: 2px solid var(--accent-foreground);
     width: 11px;
     height: 14px;
     border-radius: 0 4px 4px 0;
@@ -393,7 +393,7 @@
     position: absolute;
     width: 1px;
     height: 8px;
-    color: #fff;
+    color: var(--accent-foreground);
     top: -12px;
     left: 4px;
     box-sizing: border-box;
@@ -421,3 +421,24 @@
     }
   }
 }
+
+/* @keyframes animloader {
+  0% {
+    box-shadow:
+      2px 0px var(--muted-foreground),
+      12px 0px color-mix(in oklab, var(--muted-foreground) 30%),
+      20px 0px var(--muted-foreground);
+  }
+  50% {
+    box-shadow:
+      2px -5px color-mix(in oklab, var(--muted-foreground) 50%, transparent),
+      12px -3px color-mix(in oklab, var(--muted-foreground) 50%, transparent),
+      20px -2px color-mix(in oklab, var(--muted-foreground) 60%, transparent);
+  }
+  100% {
+    box-shadow:
+      2px -8px var(--muted-foreground),
+      12px -5px var(--muted-foreground),
+      20px -5px var(--muted-foreground);
+  }
+} */

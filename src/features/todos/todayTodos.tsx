@@ -55,8 +55,8 @@ const TodayTodos = ({ }) => {
             <Image
               src="../assets/images/undraw_designer_efwz.svg"
               alt="designer working"
-              width={350}
-              height={350}
+              width={300}
+              height={300}
             />
             <div className='text-center flex flex-col items-center mt-4'>
               <h3 className='font-semibold text-md'>What do you need to get done today?</h3>
