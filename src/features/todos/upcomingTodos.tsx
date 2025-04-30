@@ -83,8 +83,8 @@ const UpcomingTodos = () => {
             <Image
               src='../assets/images/undraw_online-calendar_zaoc.svg'
               alt="woman reading on a tree with swing"
-              width={300}
-              height={300}
+              width={250}
+              height={250}
             />
             <div className='text-center flex flex-col items-center mt-4'>
               <h3 className='font-semibold text-md'>No tasks in the upcoming days</h3>

@@ -82,8 +82,8 @@ const ProjectsById = ({ }) => {
             <Image
               src='../../assets/images/undraw_designer-life_6g9c.svg'
               alt="graphic designer girl working"
-              width={300}
-              height={300}
+              width={250}
+              height={250}
             />
             <div className='text-center flex flex-col items-center mt-4'>
               <h3 className='font-semibold text-md'>Start small (or dream big)...</h3>

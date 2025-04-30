@@ -54,8 +54,8 @@ const CompletedTodos = ({ }) => {
           <Image
             src="../assets/images/undraw_accept-tasks_syrr.svg"
             alt="man standing near the post"
-            width={300}
-            height={300}
+            width={250}
+            height={250}
           />
           <div className='text-center flex flex-col items-center mt-4'>
             <h3 className='font-semibold text-md'>You cleared all your tasks</h3>
