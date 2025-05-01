@@ -6,10 +6,7 @@ import Todos from './Todos'
 import TotalTodos from '@/features/components/totalTodos'
 
 const TodoList = ({ }) => {
-  // const todos = useQuery(api.todos.get) ?? []
-  // const completedTodos = useQuery(api.todos.getCompletedTodos) ?? []
   const inCompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []
-  // const totalCompletedTodos = useQuery(api.todos.getTotalCompletedTodos) ?? 0
 
   if (inCompleteTodos === undefined) {
     <p>Loading...</p> // * replace this later
@@ -34,22 +31,6 @@ const TodoList = ({ }) => {
           items={inCompleteTodos}
         />
       </div>
-      {
-        // **complete todos
-      }
-      {/* <AddTaskWrapper /> */}
-
-      {/* <div className="flex flex-col gap-1">
-        <Todos
-          items={completedTodos}
-        />
-      </div>
-
-      <div className='flex items-center gap-1 border-b-1 py-4 border-gray-200 dark:border-foreground/10 text-sm text-card-foreground/80'>
-        <CircleCheckBig color="#f39c16" />
-        <span>+{totalCompletedTodos}</span>
-        <span className='capitalize'>completed tasks</span>
-      </div> */}
 
     </div>
   )

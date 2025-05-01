@@ -7,11 +7,7 @@ import Paragraph from '@tiptap/extension-paragraph'
 import Text from '@tiptap/extension-text'
 import { cn } from '@/lib/utils'
 import { customEditorButtonItems } from '@/data/customEditorButton'
-
-interface CustomEditorProps {
-  testData: string
-  onChange?: (value: React.ReactNode) => void;
-}
+import { CustomEditorProps } from '@/types/types'
 
 const CustomEditor: FC<CustomEditorProps> = ({ testData, onChange }) => {
 

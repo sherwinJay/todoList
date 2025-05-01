@@ -2,12 +2,9 @@
 
 import { FC, useState } from 'react'
 import AddTaskButton from './AddTaskButton'
-import { Doc } from '../../../convex/_generated/dataModel'
 import InputForm from '../form/InputForm'
+import { AddTaskWrapperProps } from '@/types/types'
 
-interface AddTaskWrapperProps {
-  parentTask?: Doc<"todos">
-}
 
 const AddTaskWrapper: FC<AddTaskWrapperProps> = ({ parentTask }) => {
   // ! try to improve the logic of this component

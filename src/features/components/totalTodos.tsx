@@ -1,13 +1,7 @@
 import { cn } from '@/lib/utils'
+import { totalTodosProps } from '@/types/types'
 import { CircleCheck } from 'lucide-react'
 import { FC } from 'react'
-
-interface totalTodosProps {
-  title: string
-  textColor: string
-  iconColor?: string
-  totalTodos: number
-}
 
 const TotalTodos: FC<totalTodosProps> = ({ title, textColor, iconColor, totalTodos }) => {
   return (

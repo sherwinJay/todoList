@@ -1,19 +1,14 @@
 'use client'
 
 import { FC } from 'react'
-import { Doc, Id } from '../../../convex/_generated/dataModel'
+import { Doc } from '../../../convex/_generated/dataModel'
 import TodoItem from './TodoItem'
-import { ReactMutation, useMutation } from 'convex/react'
-import { FunctionReference } from 'convex/server'
+import { useMutation } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
 import { toast } from 'sonner'
+import { SubTodosListProps } from '@/types/types'
 
-interface SubTodosListProps {
-  subTodosData: Doc<"subtodos">[]
-  handleCheck?: ReactMutation<FunctionReference<"mutation", "public", {
-    taskId: Id<"subtodos">;
-  }, null, string | undefined>>
-}
+
 
 // * create new subtodoItem component and make them popOver
 const SubTodosList: FC<SubTodosListProps> = ({ subTodosData }) => {

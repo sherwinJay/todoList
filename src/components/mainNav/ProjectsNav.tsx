@@ -15,9 +15,7 @@ const ProjectsNav = ({ }) => {
 
   const pathname = usePathname()
   const { projectId: paramsProjectId } = useParams<{ projectId: Id<'projects'> }>()
-  // const toggleAddForm = useAddTaskStore(state => state.toggleAddForm)
   const projects = useQuery(api.projects.getProjects) ?? []
-  // const [isShowProjectForm, setIsShowProjectForm] = useState<boolean>(false)
   const toggleProjectForm = useAddProjectStore(state => state.toggleAddProject)
   const { open, isMobile, toggleSidebar } = useSidebar()
 
@@ -29,8 +27,6 @@ const ProjectsNav = ({ }) => {
       toggleProjectForm()
     }
   }
-
-  // const hideModal = () => setIsShowProjectForm(false)
 
   return (
     <>
@@ -72,7 +68,6 @@ const ProjectsNav = ({ }) => {
           ))}
         </SidebarMenu>
       </SidebarGroup>
-      {/* {isShowProjectForm && <ProjectForm hideModal={hideModal} />} */}
     </>
   )
 }

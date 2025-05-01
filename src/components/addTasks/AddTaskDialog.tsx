@@ -2,7 +2,6 @@
 
 import { FC, useEffect, useState } from 'react'
 import { DialogContent, DialogDescription, DialogHeader, DialogTitle, InnerDialog, InnerDialogTrigger } from '../ui/dialog'
-import { Doc } from '../../../convex/_generated/dataModel'
 import { Label } from '../ui/label'
 import { Button } from '../ui/button'
 import { Calendar, ChevronDown, Flag, Hash, Tag } from 'lucide-react'
@@ -11,20 +10,9 @@ import { useQuery } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
 import { cn } from '@/lib/utils'
 import { AddTaskWrapper, SubTodosList, CustomCheckbox } from "@/components"
-// import { ScrollArea } from '../ui/scroll-area'
 import TotalSubTodos from '../../features/components/TotalSubTodos'
+import { AddTaskDialogProps, DetailsType } from '@/types/types'
 
-type AddTaskDialogProps = {
-  todosData: Doc<"todos">
-  handleOnChange: () => void
-}
-
-type DetailsType = {
-  labelName: string
-  value: string
-  icon: React.ReactNode
-  id: number
-}
 
 const AddTaskDialog: FC<AddTaskDialogProps> = ({ todosData, handleOnChange }) => {
 

@@ -37,8 +37,6 @@ const UpcomingTodos = () => {
     return acc;
   }, {}) || {};  // Default to empty object instead of array for consistency
 
-
-
   if (inCompleteTodos === undefined || totalIncompleteTodos === undefined) {
     return <Loader />
   }

@@ -1,19 +1,13 @@
 'use client'
 
 import { FC, useState } from 'react'
-import { Doc } from '../../../convex/_generated/dataModel'
 import { checkIsSubTodo, cn } from '@/lib/utils'
 import { Dialog, DialogTrigger } from '../ui/dialog'
 import { AddTaskDialog, AddSubTaskDialog, CustomCheckbox, CustomDialog, UpdateTaskForm } from "@/components"
 import moment from 'moment'
 import { Calendar, PenLine, Trash2 } from 'lucide-react'
 import TotalSubTodos from '../../features/components/TotalSubTodos'
-
-interface TodoItemProps {
-  todosData: Doc<'todos'> | Doc<'subtodos'>,
-  handleOnChange: () => void
-  handleDelete: () => void
-}
+import { TodoItemProps } from '@/types/types'
 
 
 const TodoItem: FC<TodoItemProps> = ({ todosData, handleOnChange, handleDelete }) => {

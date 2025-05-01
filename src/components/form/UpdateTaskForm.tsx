@@ -25,20 +25,9 @@ import { priorityData } from "@/data/data"
 import { Separator } from '../ui/separator'
 import { CardFooter } from '../ui/card'
 import { useIsMobile } from '@/hooks/use-mobile'
+import { UpdateTaskFormProps } from '@/types/types'
 
-interface UpdateTaskFormProps {
-  parentTask: Doc<'todos'> | Doc<"subtodos">,
-  hideModal: () => void
-}
 
-// export function getFirstAndLast(str: string) {
-//   if (str.length === 0) return "String is empty";
-
-//   const first = str[0];
-//   const last = str[str.length - 1];
-
-//   return `${first}${last}`;
-// }
 
 const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
 

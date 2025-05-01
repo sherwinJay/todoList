@@ -6,11 +6,7 @@ import ProjectsNav from '../mainNav/ProjectsNav'
 const MainSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   return (
     <Sidebar collapsible="icon" {...props}>
-      {/* <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
-      </SidebarHeader> */}
       <SidebarContent>
-        {/* <NavMain items={data.navMain} /> */}
         <div className='my-5 flex items-center justify-center gap-1' >
           <SquarePen width={20} height={20} />
           <h1 className='text-2xl font-bold'>Todolist</h1>

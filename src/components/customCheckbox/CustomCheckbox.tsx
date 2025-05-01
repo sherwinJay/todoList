@@ -1,13 +1,7 @@
 import { FC } from 'react'
 import { Checkbox } from '../ui/checkbox'
 import { cn } from '@/lib/utils'
-
-interface CustomCheckboxProps {
-  priority: number | undefined
-  isCompleted: boolean
-  handleOnChange: () => void
-  styles: string
-}
+import { CustomCheckboxProps } from '@/types/types'
 
 const CustomCheckbox: FC<CustomCheckboxProps> = ({ priority, isCompleted, handleOnChange, styles }) => {
   return (

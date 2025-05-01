@@ -1,12 +1,7 @@
 import { Plus } from 'lucide-react'
 import { FC } from 'react'
 import { Button } from '../ui/button'
-
-interface AddTaskButtonProps {
-  showModal: () => void
-  title: string
-  isCompleted?: boolean
-}
+import { AddTaskButtonProps } from '@/types/types'
 
 const AddTaskButton: FC<AddTaskButtonProps> = ({ showModal, title, isCompleted }) => {
   return (

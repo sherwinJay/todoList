@@ -30,13 +30,10 @@ import { priorityData } from "@/data/data"
 import { useParams } from "next/navigation"
 import { Separator } from "../ui/separator"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { AddFormType } from "@/types/types"
 
-type InputFormType = {
-  hideModal: () => void
-  parentTask?: Doc<'todos'>
-}
 
-export default function InputForm({ hideModal, parentTask }: InputFormType) {
+export default function InputForm({ hideModal, parentTask }: AddFormType) {
 
   const { projectId: paramsProjectId } = useParams<{ projectId: Id<'projects'> }>()
   const currentDate = new Date()

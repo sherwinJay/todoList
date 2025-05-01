@@ -7,10 +7,7 @@ import { api } from '../../../convex/_generated/api'
 import { Todos } from '@/components'
 import { Dot } from 'lucide-react'
 import TotalTodos from '../components/totalTodos'
-
-interface todosByDateProps {
-  date: string
-}
+import { todosByDateProps } from '@/types/types'
 
 const TodosByDate: FC<todosByDateProps> = ({ date }) => {
   const incompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []

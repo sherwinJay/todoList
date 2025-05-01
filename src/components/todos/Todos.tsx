@@ -6,10 +6,7 @@ import { api } from '../../../convex/_generated/api'
 import { Doc } from '../../../convex/_generated/dataModel'
 import TodoItem from './TodoItem'
 import { toast } from 'sonner'
-
-interface TodosProps {
-  items: Doc<'todos'>[]
-}
+import { TodosProps } from '@/types/types'
 
 const Todos: FC<TodosProps> = ({ items }) => {
 

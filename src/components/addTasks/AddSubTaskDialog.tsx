@@ -1,10 +1,6 @@
 import { FC } from 'react'
 import { InnerDialogContent, InnerDialogDescription, InnerDialogHeader, InnerDialogTitle } from '../ui/dialog'
-import { Doc } from '../../../convex/_generated/dataModel'
-
-interface AddSubTaskDialogProps {
-  subTodosData: Doc<"subtodos">
-}
+import { AddSubTaskDialogProps } from '@/types/types'
 
 const AddSubTaskDialog: FC<AddSubTaskDialogProps> = ({ subTodosData }) => {
   return (

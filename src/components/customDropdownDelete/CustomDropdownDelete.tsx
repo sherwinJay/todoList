@@ -3,12 +3,7 @@
 import { FC } from 'react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from '../ui/dropdown-menu'
 import { EllipsisIcon, Trash2 } from 'lucide-react'
-
-interface CustomDropdownDeleteProps {
-  handleConfirmDelete: () => void
-  title: string
-  disabled?: boolean
-}
+import { CustomDropdownDeleteProps } from '@/types/types'
 
 const CustomDropdownDelete: FC<CustomDropdownDeleteProps> = ({ handleConfirmDelete, title, disabled }) => {
   return (

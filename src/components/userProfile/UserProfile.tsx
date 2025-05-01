@@ -17,13 +17,14 @@ import {
 
 import { SignOutButton, useUser } from '@clerk/nextjs'
 import ThemeSwitch from "../themeSwitch/ThemeSwitch"
+import { Skeleton } from "../ui/skeleton"
 
 const UserProfile = () => {
 
   const { user, isLoaded } = useUser()
 
   if (!isLoaded) {
-    return <div>Loading...</div>
+    return <Skeleton className="w-[32px] h-[32px] rounded-full" />
   }
 
   return (

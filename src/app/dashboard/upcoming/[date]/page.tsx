@@ -1,9 +1,10 @@
 import TodosByDate from '@/features/todos/todosByDate'
+import { UpcomingPageTypes } from '@/types/types'
 import moment from 'moment'
+import { FC } from 'react'
 
-type PageProps = Promise<{ date: string }>
 
-const UpcomingByDatePage = async ({ params }: { params: PageProps }) => {
+const UpcomingByDatePage: FC<{ params: UpcomingPageTypes }> = async ({ params }) => {
   // const pathname = usePathname()
   const { date } = await params
 

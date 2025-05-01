@@ -1,14 +1,10 @@
 'use client'
 import { cn } from '@/lib/utils'
+import { CustomCollapsibleProps } from '@/types/types'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@radix-ui/react-collapsible'
 import { ChevronsDown, ChevronsRight } from 'lucide-react'
 import { FC, useState } from 'react'
 
-interface CustomCollapsibleProps {
-  title: string,
-  children: React.ReactNode
-  showDropdownDelete?: boolean
-}
 
 const CustomCollapsible: FC<CustomCollapsibleProps> = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(true)

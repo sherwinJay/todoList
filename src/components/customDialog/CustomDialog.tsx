@@ -1,13 +1,8 @@
 import { FC } from 'react'
 import { Button } from '../ui/button'
 import { Separator } from '../ui/separator'
+import { customDialogProps } from '@/types/types'
 
-interface customDialogProps {
-  taskName: string
-  setShowConfirmDelete: () => void
-  handleDelete: () => void
-  title: string
-}
 
 const CustomDialog: FC<customDialogProps> = ({ taskName, setShowConfirmDelete, handleDelete, title }) => {
   return (

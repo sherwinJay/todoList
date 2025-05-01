@@ -4,11 +4,9 @@ import { useQuery } from 'convex/react'
 import { FC } from 'react'
 import { api } from '../../../convex/_generated/api'
 import { CircleCheckBig } from 'lucide-react'
+import { TotalSubTodosProps } from '@/types/types'
 
-interface TotalSubTodosProps {
-  id: string
-  isDialog: boolean
-}
+
 
 const TotalSubTodos: FC<TotalSubTodosProps> = ({ id, isDialog }) => {
   const incompleteSubTodosByProject = useQuery(api.subTodos.inCompleteSubTodos) ?? []

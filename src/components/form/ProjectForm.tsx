@@ -14,10 +14,8 @@ import { CardFooter } from '../ui/card'
 import { Button } from '../ui/button'
 import { Separator } from '../ui/separator'
 import { Label } from '../ui/label'
+import { ProjectFormProps } from '@/types/types'
 
-interface ProjectFormProps {
-  hideModal: () => void
-}
 
 const ProjectForm: FC<ProjectFormProps> = ({ hideModal }) => {
 
