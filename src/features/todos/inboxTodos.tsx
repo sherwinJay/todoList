@@ -10,7 +10,7 @@ const InboxTodos = ({ }) => {
   const inCompleteTodos = useQuery(api.todos.getInCompletedTodos) ?? []
   const totalIncompleteTodos = useQuery(api.todos.getTotalInCompleteTodos)
 
-  if (inCompleteTodos !== undefined || totalIncompleteTodos === undefined) {
+  if (inCompleteTodos === undefined || totalIncompleteTodos === undefined) {
     return <Loader />
   }
 
