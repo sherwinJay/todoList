@@ -392,7 +392,7 @@
     }
   } */
 
-  .loader {
+  /* .loader {
     width: 40px;
     height: 40px;
     border: color-mix(in oklab, var(--accent-foreground) 30%, transparent) 4px
@@ -409,6 +409,26 @@
       transform: rotate(0deg);
     }
     100% {
+      transform: rotate(360deg);
+    }
+  } */
+  .loading-state {
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .loading {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: color-mix(in oklab, var(--muted-foreground) 20%, transparent) 4px
+      solid;
+    border-top-color: #f39c16;
+    animation: loading 1s linear infinite;
+  }
+  @keyframes loading {
+    to {
       transform: rotate(360deg);
     }
   }

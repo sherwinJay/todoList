@@ -2,10 +2,11 @@
 const Loader = ({ }) => {
   return (
     <section className="grid place-content-center gap-8 h-full min-h-[350px]">
-      <span className="loader">
-        {/* Loading... */}
-      </span>
-
+      {/* <span className="loader">
+      </span> */}
+      <div className="loading-state">
+        <div className="loading"></div>
+      </div>
     </section>
   )
 }
