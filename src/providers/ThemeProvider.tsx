@@ -1,6 +1,6 @@
 'use client'
 
-import { InputForm } from '@/components';
+import { AddForm } from '@/components';
 import ProjectForm from '@/components/form/ProjectForm';
 import { useAddTaskStore } from '@/stores/formDialogStore';
 import { useAddProjectStore } from '@/stores/projectFormDialogStore';
@@ -67,7 +67,7 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
         {isShowAddForm && (
           <div className='lg:w-[520px] absolute top-[200px] left-[10%] md:left-[20%] lg:left-[37%] z-10 min-w-[300px]'>
             <div className='rounded-xl border-slate-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl shadow-gray-300 dark:shadow-slate-800'>
-              <InputForm hideModal={closeForm} />
+              <AddForm hideModal={closeForm} />
             </div>
           </div>
         )}

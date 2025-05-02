@@ -33,7 +33,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 import { AddFormType } from "@/types/types"
 
 
-export default function InputForm({ hideModal, parentTask }: AddFormType) {
+export default function AddForm({ hideModal, parentTask }: AddFormType) {
 
   const { projectId: paramsProjectId } = useParams<{ projectId: Id<'projects'> }>()
   const currentDate = new Date()

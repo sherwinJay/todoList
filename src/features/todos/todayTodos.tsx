@@ -31,9 +31,11 @@ const TodayTodos = ({ }) => {
         totalTodos={totalTodos}
       />
 
-      <CustomCollapsible title='Overdue'>
-        <Todos items={overdueTodos} />
-      </CustomCollapsible>
+      {overdueTodos.length > 0 && (
+        <CustomCollapsible title='Overdue'>
+          <Todos items={overdueTodos} />
+        </CustomCollapsible>
+      )}
 
       <div className="flex flex-col gap-1 py-4">
         <div className='font-bold flex items-center gap-0.5 text-sm'>

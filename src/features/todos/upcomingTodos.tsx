@@ -49,11 +49,13 @@ const UpcomingTodos = () => {
         iconColor='#99a1af'
         totalTodos={totalIncompleteTodos}
       />
-      {/* <div className=''> */}
-      <CustomCollapsible title='Overdue'>
-        <Todos items={overdueTodos} />
-      </CustomCollapsible>
-      {/* </div> */}
+
+      {overdueTodos.length > 0 && (
+        <CustomCollapsible title='Overdue'>
+          <Todos items={overdueTodos} />
+        </CustomCollapsible>
+      )}
+
       <div className=''>
         {Object.keys(groupedTodosByDate || {}).map(dueDate => {
           const formattedDate = new Date(dueDate)

@@ -3,7 +3,7 @@
 import { useQuery } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
 import TotalTodos from '../components/totalTodos'
-import { Loader, Todos } from '@/components'
+import { AddTaskWrapper, Loader, Todos } from '@/components'
 import Image from 'next/image'
 
 const InboxTodos = ({ }) => {
@@ -29,20 +29,23 @@ const InboxTodos = ({ }) => {
       </div>
 
       {totalIncompleteTodos === 0 && (
-        <div className='flex gap-3 items-center flex-col mt-20'>
-          <Image
-            src='../assets/images/undraw_tree-swing_5010.svg'
-            alt="woman reading on a tree with swing"
-            width={250}
-            height={250}
-          />
-          <div className='text-center flex flex-col items-center mt-4'>
-            <h3 className='font-semibold text-md'>Your peace of mind is priceless</h3>
-            <p className='text-sm mt-2 w-[250px] leading-6'>
-              Well done! All your tasks are organized in the right place.
-            </p>
+        <>
+          <AddTaskWrapper />
+          <div className='flex gap-3 items-center flex-col mt-20'>
+            <Image
+              src='../assets/images/undraw_tree-swing_5010.svg'
+              alt="woman reading on a tree with swing"
+              width={250}
+              height={250}
+            />
+            <div className='text-center flex flex-col items-center mt-4'>
+              <h3 className='font-semibold text-md'>Your peace of mind is priceless</h3>
+              <p className='text-sm mt-2 w-[250px] leading-6'>
+                Well done! All your tasks are organized in the right place.
+              </p>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   )

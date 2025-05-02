@@ -6,7 +6,7 @@ import MainNav from "./mainNav/MainNav"
 import Todos from "./todos/Todos"
 import TodoList from "./todos/TodoList"
 import TodoItem from "./todos/TodoItem"
-import InputForm from "./form/InputForm"
+import AddForm from "./form/AddForm"
 import AddTaskButton from "./addTasks/AddTaskButton"
 import AddTaskWrapper from "./addTasks/AddTaskWrapper"
 import SubTodosList from "./todos/SubTodosList"
@@ -30,7 +30,7 @@ export {
   Todos,
   TodoList,
   TodoItem,
-  InputForm,
+  AddForm,
   AddTaskButton,
   AddTaskWrapper,
   SubTodosList,
