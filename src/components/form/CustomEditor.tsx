@@ -2,9 +2,6 @@ import Placeholder from '@tiptap/extension-placeholder'
 import { BubbleMenu, EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { FC } from 'react'
-import Document from '@tiptap/extension-document'
-import Paragraph from '@tiptap/extension-paragraph'
-import Text from '@tiptap/extension-text'
 import { cn } from '@/lib/utils'
 import { customEditorButtonItems } from '@/data/customEditorButton'
 import { CustomEditorProps } from '@/types/types'
@@ -14,9 +11,6 @@ const CustomEditor: FC<CustomEditorProps> = ({ testData, onChange }) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
-      Document,
-      Paragraph,
-      Text,
       Placeholder.configure({
         placeholder: "description",
       }),
