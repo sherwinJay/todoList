@@ -34,8 +34,6 @@ const ProjectForm: FC<ProjectFormProps> = ({ hideModal }) => {
 
     const projectMutation = createAProjectMutation({ name })
 
-    // console.log('project: ', projectMutation)
-
     if (projectMutation !== undefined) {
       toast('🗂️ Created a project')
       form.reset({ ...defaultValues })
