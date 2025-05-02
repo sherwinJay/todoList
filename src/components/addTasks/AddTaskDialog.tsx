@@ -87,9 +87,6 @@ const AddTaskDialog: FC<AddTaskDialogProps> = ({ todosData, handleOnChange }) =>
             <p className='font-bold flex text-sm text-black dark:text-white border-none mr-2'>Sub-tasks</p>
             <TotalSubTodos isDialog={true} id={_id} />
           </div>
-          {/* <Button variant={'outline'} disabled>
-            Suggest Missing Tasks (AI)
-          </Button> */}
 
           <Button variant={'outline'} disabled={completedSubTodosByTask === 0} className='text-xs cursor-pointer px-3 h-9 rounded-lg' onClick={handleShowCommpletedSubTask}>
             {isShowCompletedSubTask ? 'Hide Completed' : 'Show Completed'}
