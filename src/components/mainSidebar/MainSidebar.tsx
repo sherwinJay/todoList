@@ -1,7 +1,7 @@
 import { Sidebar, SidebarContent, SidebarRail } from '../ui/sidebar'
 import MainNav from '../mainNav/MainNav'
 import { SquarePen } from 'lucide-react'
-import ProjectsNav from '../mainNav/ProjectsNav'
+import ProjectsNav from '../../features/projects/ProjectsNav'
 
 const MainSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   return (

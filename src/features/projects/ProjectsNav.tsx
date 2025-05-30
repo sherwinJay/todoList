@@ -1,11 +1,11 @@
 "use client"
 
-import { SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '../ui/sidebar'
-import { Collapsible, CollapsibleTrigger } from '../ui/collapsible'
+import { SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '../../components/ui/sidebar'
+import { Collapsible, CollapsibleTrigger } from '../../components/ui/collapsible'
 import { useParams, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { Hash, Plus } from 'lucide-react'
+import { Folder, FolderCog, Plus } from 'lucide-react'
 import { useQuery } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
 import { useAddProjectStore } from '@/stores/projectFormDialogStore'
@@ -58,7 +58,7 @@ const ProjectsNav = ({ }) => {
                       className={cn('flex gap-2 items-center', paramsProjectId === project._id && 'text-orange-400')}
                       onClick={() => open && isMobile && toggleSidebar()}
                     >
-                      <Hash className='w-4 h-4' />
+                      {project.type === 'system' ? <FolderCog className='w-4 h-4' /> : <Folder className='w-4 h-4' />}
                       {project.name}
                     </Link>
                   </SidebarMenuButton>
