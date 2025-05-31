@@ -44,16 +44,18 @@ export type CustomCollapsibleProps = {
 }
 
 export type customDialogProps = {
-  taskName: string
+  taskName?: string
   setShowConfirmDelete: () => void
   handleDelete: () => void
   title: string
 }
 
-export type CustomDropdownDeleteProps = {
+export type CustomDropdownProps = {
   handleConfirmDelete: () => void
   title: string
   disabled?: boolean
+  showEdit?: boolean
+  showProjectForm?: () => void
 }
 
 export type CustomEditorProps = {

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useAction, useQuery } from 'convex/react'
-import { CustomDialog, CustomDropdownDelete, Loader } from '@/components'
+import { CustomDialog, CustomDropdown, Loader } from '@/components'
 import { api } from '../../../convex/_generated/api'
 import { Todos } from '@/components'
 import CustomCollapsible from '../../components/customCollapsible/CustomCollapsible'
@@ -16,16 +16,16 @@ const CompletedTodos = ({ }) => {
   const deleteAllTasksAndItsSubtasks = useAction(api.todos.deleteAllCompletedTodoAndItsSubtasks)
   const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 
+  if (completedTodos === undefined || totalCompletedTasks === undefined) {
+    return <Loader />
+  }
+
   const handleClearAllCompleteTasks = () => {
     deleteAllTasksAndItsSubtasks()
     setShowConfirmDelete(false)
     toast("🗑️ Task deleted", {
       description: 'You deleted all task.',
     })
-  }
-
-  if (completedTodos === undefined || totalCompletedTasks === undefined) {
-    return <Loader />
   }
 
   return (
@@ -46,7 +46,7 @@ const CompletedTodos = ({ }) => {
             <Todos items={completedTodos} />
           </CustomCollapsible>
           <div className='absolute top-4 right-0'>
-            <CustomDropdownDelete title='Clear Main Tasks' handleConfirmDelete={() => setShowConfirmDelete(true)} disabled={completedTodos.length === 0} />
+            <CustomDropdown title='Clear Main Tasks' handleConfirmDelete={() => setShowConfirmDelete(true)} disabled={completedTodos.length === 0} />
           </div>
         </div>
       ) : (

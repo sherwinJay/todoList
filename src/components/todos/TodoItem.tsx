@@ -9,7 +9,6 @@ import { Calendar, PenLine, Trash2 } from 'lucide-react'
 import TotalSubTodos from '../../features/components/TotalSubTodos'
 import { TodoItemProps } from '@/types/types'
 
-
 const TodoItem: FC<TodoItemProps> = ({ todosData, handleOnChange, handleDelete }) => {
   const { taskName, _id, isCompleted, description, priority, dueDate } = todosData
   const today = new Date()
@@ -22,8 +21,10 @@ const TodoItem: FC<TodoItemProps> = ({ todosData, handleOnChange, handleDelete }
 
   return (
     <>
-      {showUpdateForm ? (<UpdateTaskForm parentTask={todosData} hideModal={() => setShowUpdateForm(false)} />)
-        : (<li key={_id} className="items-top list-disc! flex space-x-2 border-b-1 py-3 border-gray-200 dark:border-foreground/20 animate-in fade-in">
+      {showUpdateForm ? (
+        <UpdateTaskForm parentTask={todosData} hideModal={() => setShowUpdateForm(false)} />
+      ) : (
+        <li key={_id} className="items-top list-disc! flex space-x-2 border-b-1 py-3 border-gray-200 dark:border-foreground/20 animate-in fade-in">
           <Dialog>
             <div className="flex gap-2 items-center w-full">
               <div className='flex gap-2 w-full py-[2px] items-center relative '>
@@ -51,7 +52,6 @@ const TodoItem: FC<TodoItemProps> = ({ todosData, handleOnChange, handleDelete }
                 </DialogTrigger>
               </div>
               {isSubTodo ? <AddSubTaskDialog subTodosData={todosData} /> : <AddTaskDialog todosData={todosData} handleOnChange={handleOnChange} />}
-              {/* {!isSubTodo(todosData) && <AddTaskDialog todosData={todosData} />} */}
             </div>
             <div className='flex items-center gap-4'>
               <div className='action-button-wrapper relative mt-1'>
@@ -70,7 +70,8 @@ const TodoItem: FC<TodoItemProps> = ({ todosData, handleOnChange, handleDelete }
             </div>
 
           </Dialog>
-        </li>)}
+        </li>
+      )}
 
       {showConfirmDelete && (
         <CustomDialog

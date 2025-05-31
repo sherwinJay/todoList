@@ -46,6 +46,37 @@ export const getProjectId = query({
   },
 })
 
+export const getProjectByProjectId = query({
+  args: {
+    projectId: v.id("projects"),
+  },
+  handler: async (ctx, { projectId }) => {
+    const project = await ctx.db
+      .query("projects")
+      .filter((q) => q.eq(q.field("_id"), projectId))
+      .collect()
+    return project?.[0] || null
+  },
+})
+
+// export const getTotalProjectsById = query({
+//   args: {
+//     projectId: v.id("projects"),
+//   },
+//   handler: async (ctx, { projectId }) => {
+//     // const userId = await handleUserId(ctx)
+//     // const userId = await getUserId(ctx)
+//     const totalProjectsById = await ctx.db
+//       .query("projects")
+//       .filter((q) => q.eq(q.field("_id"), projectId))
+//       // .filter((todo) => todo.eq(todo.field("userId"), userId))
+//       // .filter((todo) => todo.eq(todo.field("isCompleted"), true))
+//       .collect()
+
+//     return totalProjectsById.length || 0
+//   },
+// })
+
 export const createAProject = mutation({
   args: {
     name: v.string(),
@@ -60,7 +91,28 @@ export const createAProject = mutation({
           type: "user",
         })
 
-        console.log("new proj:", newProject)
+        return newProject
+      }
+      return null
+    } catch (error) {
+      console.log("Error occured during createAProject mutation", error)
+      return null
+    }
+  },
+})
+
+export const updateAProject = mutation({
+  args: {
+    name: v.string(),
+    projectId: v.id("projects"),
+  }, // argument || params
+  handler: async (ctx, { name, projectId }) => {
+    try {
+      const userId = await getUserId(ctx)
+      if (userId) {
+        const newProject = await ctx.db.patch(projectId, {
+          name,
+        })
 
         return newProject
       }
@@ -117,18 +169,5 @@ export const deleleProjectAndItsTasks = action({
       console.log("Error occured during deleteProjectByTask mutation", error)
       return null
     }
-  },
-})
-
-export const getProjectByProjectId = query({
-  args: {
-    projectId: v.id("projects"),
-  },
-  handler: async (ctx, { projectId }) => {
-    const project = await ctx.db
-      .query("projects")
-      .filter((q) => q.eq(q.field("_id"), projectId))
-      .collect()
-    return project?.[0] || null
   },
 })

@@ -16,7 +16,7 @@ import CustomCheckbox from "./customCheckbox/CustomCheckbox"
 import ProjectsLists from "../features/projects/ProjectsLists"
 import CustomDialog from "./customDialog/CustomDialog"
 import UpdateTaskForm from "./form/UpdateTaskForm"
-import CustomDropdownDelete from "./customDropdownDelete/CustomDropdownDelete"
+import CustomDropdown from "./customDropdown/CustomDropdown"
 import Loader from "./loader/Loader"
 import TotalTodos from "@/features/components/totalTodos"
 import CustomCollapsible from "./customCollapsible/CustomCollapsible"
@@ -40,7 +40,7 @@ export {
   ProjectsLists,
   CustomDialog,
   UpdateTaskForm,
-  CustomDropdownDelete,
+  CustomDropdown,
   Loader,
   TotalTodos,
   CustomCollapsible,

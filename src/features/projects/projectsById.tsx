@@ -5,21 +5,23 @@ import { useState } from 'react'
 import { Doc, Id } from '../../../convex/_generated/dataModel'
 import { useAction, useQuery } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
-import { AddTaskWrapper, CustomDialog, CustomDropdownDelete, Loader, Todos } from '@/components'
+import { AddTaskWrapper, CustomDialog, CustomDropdown, Loader, Todos } from '@/components'
 import TotalTodos from '../components/totalTodos'
 import { toast } from 'sonner'
 import Image from 'next/image'
+import ProjectTitleForm from './projectTitleForm'
 
 const ProjectsById = ({ }) => {
   const { projectId } = useParams<{ projectId: Id<'projects'> }>()
-  const todosByProject = useQuery(api.todos.getTodosByProjectId, { projectId }) ?? []
   const project = useQuery(api.projects.getProjectId, { projectId })
-  const totalTodosByProject = todosByProject.length
+  const todosByProject = useQuery(api.todos.getTodosByProjectId, { projectId }) ?? []
+  const totalTodosByProject = useQuery(api.todos.getTotalTodosByProjectId, { projectId })
   const [showConfirmDelete, setShowConfirmDelete] = useState(false)
   const router = useRouter()
   const deleteProjectAndItsTasks = useAction(api.projects.deleleProjectAndItsTasks)
+  const [showProjectTitleForm, setShowProjectTitleForm] = useState(false)
 
-  if (todosByProject === undefined || project === undefined) {
+  if (project === undefined || todosByProject === undefined || totalTodosByProject === undefined) {
     return <Loader />
   }
 
@@ -49,19 +51,24 @@ const ProjectsById = ({ }) => {
     }
   }
 
-  if (todosByProject === undefined || project === undefined) {
-    return <Loader />
-  }
-
   return (
     <>
       <div className="flex items-center justify-between">
-        <h1 className="text-lg font-semibold md:text-2xl">{project?.name}</h1>
+        {showProjectTitleForm ? (
+          <ProjectTitleForm name={project!.name} hideModal={() => setShowProjectTitleForm(false)} projectId={project!._id} />
+        ) : (
+          <h1 className="text-lg font-semibold md:text-2xl">
+            {project?.name}
+          </h1>
+        )}
+
         <div className='flex items-center'>
-          <CustomDropdownDelete
+          <CustomDropdown
             title='Delete Project'
             handleConfirmDelete={() => handleConfirmDeleteProject(project!)}
-            disabled={totalTodosByProject === 0}
+            // disabled={totalTodosByProject === 0}
+            showEdit={project?.type === 'user' ? true : false}
+            showProjectForm={() => setShowProjectTitleForm(true)}
           />
         </div>
       </div>
@@ -99,12 +106,11 @@ const ProjectsById = ({ }) => {
       {showConfirmDelete && (
         <CustomDialog
           title="Delete Project"
-          taskName={project!.name}
+          taskName={project?.name}
           setShowConfirmDelete={() => setShowConfirmDelete(false)}
           handleDelete={() => handleDelete(projectId)}
         />
       )}
-
     </>
   )
 }

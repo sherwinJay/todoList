@@ -138,6 +138,23 @@ export const getTodosByProjectId = query({
   },
 })
 
+export const getTotalTodosByProjectId = query({
+  args: {
+    projectId: v.id("projects"),
+  },
+  handler: async (ctx, { projectId }) => {
+    const userId = await getUserId(ctx)
+
+    const totalTodosByProject = await ctx.db
+      .query("todos")
+      .filter((user) => user.eq(user.field("userId"), userId))
+      .filter((todo) => todo.eq(todo.field("projectId"), projectId))
+      .collect()
+
+    return totalTodosByProject.length || 0
+  },
+})
+
 // * MUTATIONS
 
 export const checkATodo = mutation({
@@ -358,10 +375,6 @@ export const deleteAllCompletedTodoAndItsSubtasks = action({
           )
         )
       )
-
-      // const statuses = await promises
-
-      // console.log("status: ", statuses)
 
       await ctx.runMutation(api.todos.deleteAllCompletedTodos)
     } catch (error) {
