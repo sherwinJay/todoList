@@ -47,10 +47,6 @@ const ProjectTitleForm: FC<projectTitleFormProps> = ({ name, hideModal, projectI
     }
   }
 
-  // const handleFormSubmit = (data: ProjectFormSchema) => {
-  //   onSubmit(data)
-  // }
-
   return (
     <Form {...form}>
       <form
