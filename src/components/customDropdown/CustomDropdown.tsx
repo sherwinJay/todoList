@@ -19,7 +19,7 @@ const CustomDropdown: FC<CustomDropdownProps> = ({ handleConfirmDelete, title, d
               onClick={showProjectForm}
               disabled={disabled}
             >
-              <PencilLine className='w-4 h-4' color='white' />
+              <PencilLine className='w-4 h-4 text-black dark:text-white' />
               <span>Edit Project Name</span>
             </button>
           </DropdownMenuItem>
@@ -30,7 +30,7 @@ const CustomDropdown: FC<CustomDropdownProps> = ({ handleConfirmDelete, title, d
             onClick={handleConfirmDelete}
             disabled={disabled}
           >
-            <Trash2 className='w-4 h-4' color='white' />
+            <Trash2 className='w-4 h-4 text-black dark:text-white' />
             <span>{title}</span>
           </button>
         </DropdownMenuItem>

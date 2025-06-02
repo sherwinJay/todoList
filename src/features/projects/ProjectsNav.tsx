@@ -58,7 +58,9 @@ const ProjectsNav = ({ }) => {
                       className={cn('flex gap-2 items-center', paramsProjectId === project._id && 'text-orange-400')}
                       onClick={() => open && isMobile && toggleSidebar()}
                     >
-                      {project.type === 'system' ? <FolderCog className='w-4 h-4' /> : <Folder className='w-4 h-4' />}
+                      <div>
+                        {project.type === 'system' ? <FolderCog className='w-4 h-4' /> : <Folder className='w-4 h-4' />}
+                      </div>
                       {project.name}
                     </Link>
                   </SidebarMenuButton>
