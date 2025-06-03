@@ -11,10 +11,10 @@ import { toast } from 'sonner'
 import Image from 'next/image'
 
 const CompletedTodos = ({ }) => {
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false)
   const completedTodos = useQuery(api.todos.getCompletedTodos) ?? []
   const totalCompletedTasks = useQuery(api.todos.getTotalCompletedTodos)
   const deleteAllTasksAndItsSubtasks = useAction(api.todos.deleteAllCompletedTodoAndItsSubtasks)
-  const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 
   if (completedTodos === undefined || totalCompletedTasks === undefined) {
     return <Loader />

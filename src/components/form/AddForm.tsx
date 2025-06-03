@@ -42,7 +42,6 @@ export default function AddForm({ hideModal, parentTask }: AddFormType) {
   const projectId = parentTask?.projectId || paramsProjectId || 'jn78ahv9chhhynkwvpmfnzcx0x7cr2q2'
   const labelId = parentTask?.labelId || ('jh77kbnft40awme48e4h4s3w897crsk4' as Id<"labels">)
   const priority = parentTask?.priority?.toString() || '1'
-  // const isSubTodo = checkIsSubTodo(parentTask)
   // * queries
   const projects = useQuery(api.projects.getProjects) ?? []
   const labels = useQuery(api.labels.getLabels) ?? []
@@ -50,9 +49,6 @@ export default function AddForm({ hideModal, parentTask }: AddFormType) {
   const createATodoMutation = useMutation(api.todos.createATodo)
   const createASubTodoMutation = useMutation(api.subTodos.createASubTodo)
   const isMobile = useIsMobile()
-
-  // const createATodoAndEmbeddings = useAction(api.todos.createTodoAndEmbeddings)
-  // const createASubTodoAndEmbeddings = useAction(api.subTodos.createSubTodoAndEmbeddings)
 
   const defaultValues = {
     taskName: '',
@@ -131,8 +127,10 @@ export default function AddForm({ hideModal, parentTask }: AddFormType) {
                   {...field}
                   required
                   className="border-0 font-semibold text-md lg:text-lg focus-visible:ring-0 shadow-none"
+                  hasError={!!form.formState.errors.taskName?.message}
                 />
               </FormControl>
+              <FormMessage className="text-xs pb-2" />
             </FormItem>
           )}
         />
@@ -147,6 +145,7 @@ export default function AddForm({ hideModal, parentTask }: AddFormType) {
                   <CustomEditor {...field} testData={field.value} onChange={field.onChange} />
                 </div>
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -248,28 +247,31 @@ export default function AddForm({ hideModal, parentTask }: AddFormType) {
           )
         }
         <Separator />
-        <CardFooter className="flex justify-between gap-2 items-center px-0 pb-2">
-          <FormField
-            control={form.control}
-            name="projectId"
-            render={({ field }) => (
-              <FormItem className="form_select_project">
-                <Select onValueChange={field.onChange} defaultValue={projectId || field.value}>
-                  <FormControl>
-                    <SelectTrigger className="border-gray-200 dark:border-gray-700 text-xs">
-                      <SelectValue placeholder="Select a project" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {projects.map((project: Doc<"projects">) => (
-                      <SelectItem key={project._id} value={project._id} className="text-xs">{project.name}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <CardFooter className={cn('flex justify-between gap-2 items-center px-0 pb-2', parentId && 'justify-end')}>
+          {!parentId && (
+            <FormField
+              control={form.control}
+              name="projectId"
+              render={({ field }) => (
+                <FormItem className="form_select_project">
+                  <Select onValueChange={field.onChange} defaultValue={projectId || field.value}>
+                    <FormControl>
+                      <SelectTrigger className="border-gray-200 dark:border-gray-700 text-xs">
+                        <SelectValue placeholder="Select a project" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {projects.map((project: Doc<"projects">) => (
+                        <SelectItem key={project._id} value={project._id} className="text-xs">{project.name}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
+
           <div className='flex gap-3'>
             <Button
               className='px-6 border-orange-400! hover:bg-orange-200! hover:border-orange-200! dark:hover:text-black cursor-pointer text-xs'

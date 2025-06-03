@@ -125,8 +125,10 @@ const UpdateTaskForm: FC<UpdateTaskFormProps> = ({ parentTask, hideModal }) => {
                   {...field}
                   required
                   className="border-0 font-semibold text-md lg:text-lg focus-visible:ring-0 shadow-none"
+                  hasError={!!form.formState.errors.taskName?.message}
                 />
               </FormControl>
+              <FormMessage className="text-xs pb-2" />
             </FormItem>
           )}
         />

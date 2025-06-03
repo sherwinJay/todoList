@@ -13,13 +13,15 @@ import ProjectTitleForm from './projectTitleForm'
 
 const ProjectsById = ({ }) => {
   const { projectId } = useParams<{ projectId: Id<'projects'> }>()
+  const router = useRouter()
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false)
+  const [showProjectTitleForm, setShowProjectTitleForm] = useState(false)
+  // * queries
   const project = useQuery(api.projects.getProjectId, { projectId })
   const todosByProject = useQuery(api.todos.getTodosByProjectId, { projectId }) ?? []
   const totalTodosByProject = useQuery(api.todos.getTotalTodosByProjectId, { projectId })
-  const [showConfirmDelete, setShowConfirmDelete] = useState(false)
-  const router = useRouter()
+  // * mutations
   const deleteProjectAndItsTasks = useAction(api.projects.deleleProjectAndItsTasks)
-  const [showProjectTitleForm, setShowProjectTitleForm] = useState(false)
 
   if (project === undefined || todosByProject === undefined || totalTodosByProject === undefined) {
     return <Loader />
@@ -100,7 +102,6 @@ const ProjectsById = ({ }) => {
             </div>
           </div>
         </>
-
       )}
 
       {showConfirmDelete && (

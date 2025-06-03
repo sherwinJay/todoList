@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { ProjectFormSchema, projectFormSchema } from '@/schema/todoSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -10,13 +10,7 @@ import { z } from 'zod'
 import { toast } from 'sonner'
 import { useMutation } from 'convex/react'
 import { api } from '../../../convex/_generated/api'
-import { Id } from '../../../convex/_generated/dataModel'
-
-interface projectTitleFormProps {
-  name: string
-  hideModal: () => void
-  projectId: Id<"projects">
-}
+import { projectTitleFormProps } from '@/types/types'
 
 const ProjectTitleForm: FC<projectTitleFormProps> = ({ name, hideModal, projectId }) => {
 
@@ -51,13 +45,13 @@ const ProjectTitleForm: FC<projectTitleFormProps> = ({ name, hideModal, projectI
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex justify-between border-1 rounded-xl px-3 py-2 w-full mr-2"
+        className="flex justify-between border-1 rounded-xl px-3 py-2 w-full mr-2 mb-4"
       >
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
-            <FormItem className="">
+            <FormItem className="relative">
               <FormControl>
                 <Input
                   id="name"
@@ -65,9 +59,11 @@ const ProjectTitleForm: FC<projectTitleFormProps> = ({ name, hideModal, projectI
                   // placeholder="Enter your Project name"
                   {...field}
                   required
-                  className="font-semibold text-lg focus-visible:ring-0 shadow-none pl-0 border-0"
+                  className="font-semibold text-sm md:text-lg focus-visible:ring-0 shadow-none border-0"
+                  hasError={!!form.formState.errors.name?.message}
                 />
               </FormControl>
+              <FormMessage className="text-xs text-nowrap bottom-[-30px] absolute" />
             </FormItem>
           )}
         />

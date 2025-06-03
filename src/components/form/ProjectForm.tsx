@@ -8,7 +8,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ProjectFormSchema, projectFormSchema } from '@/schema/todoSchema'
 import { toast } from 'sonner'
-import { Form, FormControl, FormField, FormItem } from '../ui/form'
+import { Form, FormControl, FormField, FormItem, FormMessage } from '../ui/form'
 import { Input } from '../ui/input'
 import { CardFooter } from '../ui/card'
 import { Button } from '../ui/button'
@@ -63,8 +63,10 @@ const ProjectForm: FC<ProjectFormProps> = ({ hideModal }) => {
                   {...field}
                   required
                   className="font-semibold text-lg focus-visible:ring-0 shadow-none border-[1px]"
+                  hasError={!!form.formState.errors.name?.message}
                 />
               </FormControl>
+              <FormMessage className="text-xs pb-2" />
             </FormItem>
           )}
         />

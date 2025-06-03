@@ -13,11 +13,11 @@ import Image from 'next/image'
 
 const UpcomingTodos = () => {
   const inCompleteTodos = useQuery(api.todos.getInCompletedTodos)
+  const totalIncompleteTodos = useQuery(api.todos.getTotalInCompleteTodos)
   const todayStart = moment().startOf("day")
   const overdueTodos = inCompleteTodos?.filter(todo => todo.dueDate < todayStart.valueOf()) || []
   const upcomingTodos = inCompleteTodos?.filter(todo => todo.dueDate >= todayStart.valueOf()) || []
   const sortedUpcomingTodos = upcomingTodos.sort((a, b) => a.dueDate - b.dueDate)
-  const totalIncompleteTodos = useQuery(api.todos.getTotalInCompleteTodos)
 
   const groupedTodosByDate = sortedUpcomingTodos.reduce<Record<string, Doc<"todos">[]>>((acc, todo) => {
     if (!todo.dueDate) return acc;  // handle cases where dueDate might be missing

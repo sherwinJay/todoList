@@ -117,3 +117,9 @@ export type totalTodosProps = {
 export type todosByDateProps = {
   date: string
 }
+
+export type projectTitleFormProps = {
+  name: string
+  hideModal: () => void
+  projectId: Id<"projects">
+}
