@@ -45,7 +45,7 @@ const ProjectTitleForm: FC<projectTitleFormProps> = ({ name, hideModal, projectI
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex justify-between border-1 rounded-xl px-3 py-2 w-full mr-2 mb-4"
+        className="mr-3 relative w-full"
       >
         <FormField
           control={form.control}
@@ -59,15 +59,15 @@ const ProjectTitleForm: FC<projectTitleFormProps> = ({ name, hideModal, projectI
                   // placeholder="Enter your Project name"
                   {...field}
                   required
-                  className="font-semibold text-sm md:text-lg focus-visible:ring-0 shadow-none border-0"
+                  className="font-semibold text-sm md:text-lg focus-visible:ring-0 shadow-none border-1 rounded-xl px-3 py-6 pr-[105px] w-full"
                   hasError={!!form.formState.errors.name?.message}
                 />
               </FormControl>
-              <FormMessage className="text-xs text-nowrap bottom-[-30px] absolute" />
+              <FormMessage className="text-xs text-nowrap" />
             </FormItem>
           )}
         />
-        <div className='flex gap-2'>
+        <div className='flex gap-2 absolute top-2 right-3 z-2'>
           <Button
             className='!px-3 border-orange-400! hover:bg-orange-200! hover:border-orange-200! dark:hover:text-black cursor-pointer text-xs h-8'
             variant={'outline'}
